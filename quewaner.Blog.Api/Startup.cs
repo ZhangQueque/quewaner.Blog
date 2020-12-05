@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using quewaner.Blog.ApplicationCore.Interfaces;
+using quewaner.Blog.Infrastructure.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +34,11 @@ namespace quewaner.Blog.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "quewaner.Blog.Api", Version = "v1" });
             });
+
+            //×¢ÅäÖÃÎÄ¼þÄÚÈÝ 
+            services.Configure<MongoDatabaseSettings>(Configuration.GetSection("MongoDatabaseSettings"));
+            services.AddSingleton<IMongoDatabaseSettings>(sp => sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
