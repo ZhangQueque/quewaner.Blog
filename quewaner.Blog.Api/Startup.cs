@@ -42,6 +42,11 @@ namespace quewaner.Blog.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "quewaner.Blog.Api v1"));
             }
+            else
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "quewaner.Blog.Api v1"); });
+            }
 
             app.UseRouting();
 
