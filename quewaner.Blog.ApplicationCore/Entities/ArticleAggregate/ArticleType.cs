@@ -1,4 +1,5 @@
-﻿using System;
+﻿using quewaner.Blog.ApplicationCore.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
     /// <summary>
     /// 文章类别
     /// </summary>
-    public class ArticleType:BaseEntity<string>
+    public class ArticleType:BaseEntity<string>, IAggregateRoot
     {
         /// <summary>
         /// 类别名称

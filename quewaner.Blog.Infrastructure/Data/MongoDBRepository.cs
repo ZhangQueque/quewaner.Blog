@@ -73,7 +73,7 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <param name="size">每页显示数量</param>
         /// <param name="sortDefinition">排序</param>
         /// <returns></returns>
-        public async Task<List<T>> GetAsync(Expression<Func<T, bool>> expression,int page = 1,int size =10, SortDefinition<T> sortDefinition = null)
+        public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> expression,int page = 1,int size =10, SortDefinition<T> sortDefinition = null)
         {
             var filterDefinition = Builders<T>.Filter.Where(expression);
             FindOptions<T> findOptions = new FindOptions<T>();

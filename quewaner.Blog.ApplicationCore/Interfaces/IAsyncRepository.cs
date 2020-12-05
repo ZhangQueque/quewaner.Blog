@@ -16,9 +16,9 @@ namespace quewaner.Blog.ApplicationCore.Interfaces
     {
         
         Task<bool> DeleteAsync(string id);
+        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> expression, int page = 1, int size = 10, SortDefinition<T> sortDefinition = null);
         Task<int> GetCountAsync();
-        Task<List<T>> GetAsync(Expression<Func<T, bool>> expression, int page = 1, int size = 10, SortDefinition<T> sortDefinition = null);
-        Task<bool> InsertAsync(T t);
+         Task<bool> InsertAsync(T t);
         Task<bool> IsExistsAsync(string id);
         Task<bool> UpdateAsync(string id, T t);
     }
