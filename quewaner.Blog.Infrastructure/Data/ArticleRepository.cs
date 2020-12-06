@@ -44,16 +44,14 @@ namespace quewaner.Blog.Infrastructure.Data
             //IEqualityComparer
         }
 
-        public async Task<IReadOnlyList<Article>> GetArticlesByTagsAsync(int page, int size, string queryStr = "", string tagId = "")
-        {
-            SortDefinitionBuilder<Article> sortDefinitionBuilder = new SortDefinitionBuilder<Article>();
-            if (!string.IsNullOrEmpty(tagId))
-            {
-                return (await GetAsync(m => m.ArticleTags.Where(tag => tag.Id == tagId).Any() && (m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr)), page, size, sortDefinitionBuilder.Descending(m => m.CreatTime))).Distinct().ToList();
-            }
-            return (await GetAsync(m => m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr), page, size, sortDefinitionBuilder.Descending(m => m.CreatTime))).Distinct().ToList();
-        }
 
+        /// <summary>
+        /// 通过类型筛选文章
+        /// </summary>
+        /// <param name="page">页索引</param>
+        /// <param name="size">每页显示数量</param>
+        /// <param name="queryStr">查询关键词</param>
+        /// <param name="typeIds">类型Ids</param>
         public async Task<IReadOnlyList<Article>> GetArticlesByTypesAsync(int page, int size, string queryStr = "", params string[] typeIds)
         {
             SortDefinitionBuilder<Article> sortDefinitionBuilder = new SortDefinitionBuilder<Article>();
@@ -70,14 +68,55 @@ namespace quewaner.Blog.Infrastructure.Data
             //IEqualityComparer
         }
 
-        public async Task<IReadOnlyList<Article>> GetArticlesByTypesAsync(int page, int size, string queryStr = "", string typeId = "")
+        /// <summary>
+        /// 通过标签筛选获取文章总数量
+        /// </summary>
+        /// <param name="queryStr">查询关键词</param>
+        /// <param name="tagIds">标签Ids</param>
+        /// <returns></returns>
+        public async Task<int> GetCountByTagsAsync(string queryStr = "", params string[] tagIds)
         {
             SortDefinitionBuilder<Article> sortDefinitionBuilder = new SortDefinitionBuilder<Article>();
-            if (!string.IsNullOrEmpty(typeId))
+            if (tagIds.Length > 0)
             {
-                return (await GetAsync(m => m.ArticleTypes.Where(type => type.Id == typeId).Any() && (m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr)), page, size, sortDefinitionBuilder.Descending(m => m.CreatTime))).Distinct().ToList();
+                List<Article> articles = new List<Article>();
+                foreach (var tagId in tagIds)
+                {
+                    articles.AddRange(await GetAsync(m => m.ArticleTags.Where(tag => tag.Id == tagId).Any() && (m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr))));
+                }
+                return articles.Distinct().Count();
             }
-            return (await GetAsync(m => m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr), page, size, sortDefinitionBuilder.Descending(m => m.CreatTime))).Distinct().ToList();
-        }
+            return (await GetCountAsync(m => m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr)));
+         }
+
+   
+
+
+        /// <summary>
+        /// 通过类型筛选文章总数量
+        /// </summary>
+        /// <param name="page">页索引</param>
+        /// <param name="size">每页显示数量</param>
+        /// <param name="queryStr">查询关键词</param>
+        /// <param name="typeIds">类型Ids</param>
+        public async Task<int> GetArticlesByTypesAsync(string queryStr = "", params string[] typeIds)
+        {
+            SortDefinitionBuilder<Article> sortDefinitionBuilder = new SortDefinitionBuilder<Article>();
+            if (typeIds.Length > 0)
+            {
+                List<Article> articles = new List<Article>();
+                foreach (var typeId in typeIds)
+                {
+                    articles.AddRange(await GetAsync(m => m.ArticleTypes.Where(type => type.Id == typeId).Any() && (m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr))));
+                }
+                return articles.Distinct().Count();
+            }
+            return (await GetCountAsync(m => m.Title.Contains(queryStr) || m.SummaryInfo.Contains(queryStr)));
+         }
+
+ 
+
+
+
     }
 }

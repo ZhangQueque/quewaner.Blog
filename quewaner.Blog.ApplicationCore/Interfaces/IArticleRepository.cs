@@ -10,10 +10,8 @@ namespace quewaner.Blog.ApplicationCore.Interfaces
     {
         Task<IReadOnlyList<Article>> GetArticlesByTypesAsync(int page, int size, string queryStr = "", params string[] typeId);
 
-        Task<IReadOnlyList<Article>> GetArticlesByTypesAsync(int page, int size, string queryStr = "", string typeId = "");
-
+ 
         Task<IReadOnlyList<Article>> GetArticlesByTagsAsync(int page, int size, string queryStr = "", params string[] tagId);
-        Task<IReadOnlyList<Article>> GetArticlesByTagsAsync(int page, int size, string queryStr = "", string tagId = "");
-
+ 
     }
 }
