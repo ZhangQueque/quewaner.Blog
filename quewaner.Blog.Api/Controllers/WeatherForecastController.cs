@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using quewaner.Blog.ApplicationCore.Entities.ArticleAggregate;
+using quewaner.Blog.ApplicationCore.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +28,7 @@ namespace quewaner.Blog.Api.Controllers
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
-        {
-            
-
+        { 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

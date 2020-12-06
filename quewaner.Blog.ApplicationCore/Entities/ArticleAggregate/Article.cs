@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using quewaner.Blog.ApplicationCore.Entities.AuthorAggregate;
 using quewaner.Blog.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,15 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
     public class Article:BaseEntity<string>,IAggregateRoot
     {
 
-        public Article(string title,string summaryInfo,string icon,string content, List<ArticleType> articleTypes)
+        public Article(string title,string summaryInfo,string icon,string content, List<ArticleType> articleTypes,List<ArticleTag> articleTags)
         {
             this.Code = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(),0).ToString();
             this.Title = title;
             this.SummaryInfo = summaryInfo;
             this.Icon = icon;
             this.Content = content;
-            _articleTypes.AddRange(articleTypes);
+            _articleTypes=articleTypes;
+            _articleTags= articleTags;
         }
 
         /// <summary>
@@ -71,6 +73,11 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         /// 更新时间
         /// </summary>
         public DateTime UpdateTime { get; private set; } = DateTime.Now;
+
+        /// <summary>
+        /// 作者信息
+        /// </summary>
+        public Author Author { get; private set; }
 
         /// <summary>
         /// 文章类别集合

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
     <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
     <PackageReference Include="MongoDB.Driver" Version="2.11.4" />
   </ItemGroup>

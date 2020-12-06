@@ -73,13 +73,13 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <param name="size">每页显示数量</param>
         /// <param name="sortDefinition">排序</param>
         /// <returns></returns>
-        public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> expression,int page = 1,int size =10, SortDefinition<T> sortDefinition = null)
+        public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> expression, int page = 1, int size = 10, SortDefinition<T> sortDefinition = null)
         {
             var filterDefinition = Builders<T>.Filter.Where(expression);
             FindOptions<T> findOptions = new FindOptions<T>();
-            if (sortDefinition!=null)
+            if (sortDefinition != null)
                 findOptions.Sort = sortDefinition;
-            findOptions.Skip = (page-1)*size;
+            findOptions.Skip = (page - 1) * size;
             findOptions.Limit = size;
             return (await collection.FindAsync(filterDefinition)).ToList();
         }
@@ -90,7 +90,17 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <returns></returns>
         public async Task<int> GetCountAsync()
         {
-            return (int) (await collection.CountDocumentsAsync(m=>true));
+            return (int)(await collection.CountDocumentsAsync(m => true));
+        }
+
+
+        /// <summary>
+        /// 获取符合条件的总数量
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> GetCountAsync(Expression<Func<T, bool>> expression)
+        {
+            return (int)(await collection.CountDocumentsAsync(expression));
         }
 
         /// <summary>
@@ -100,8 +110,18 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <returns></returns>
         public async Task<bool> IsExistsAsync(string id)
         {
+            return (await GetByIdAsync(id)) != null;
+        }
+
+        /// <summary>
+        /// 更具ID获取对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<T> GetByIdAsync(string id)
+        {
             IAsyncCursor<T> obj = await collection.FindAsync<T>(m => m.Id == id);
-            return (await obj.FirstOrDefaultAsync()) != null;
+            return await obj.FirstOrDefaultAsync();
         }
     }
 }
