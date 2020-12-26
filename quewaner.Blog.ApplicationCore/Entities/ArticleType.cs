@@ -10,6 +10,16 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
     /// </summary>
     public class ArticleType:BaseEntity<string>, IAggregateRoot
     {
+        public ArticleType()
+        {
+
+        }
+        public ArticleType(string name,string icon,string summaryInfo)
+        {
+            this.Name = name;
+            this.Icon = icon;
+            this.SummaryInfo = summaryInfo;
+        }
         /// <summary>
         /// 类别名称
         /// </summary>

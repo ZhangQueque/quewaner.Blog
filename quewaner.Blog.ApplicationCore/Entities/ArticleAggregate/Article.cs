@@ -15,20 +15,20 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         {
 
         }
-        public Article(string title, string summaryInfo, string icon, string content, List<ArticleType> articleTypes, List<ArticleTag> articleTags)
+        public Article(string title, string summaryInfo, string icon, string content, ArticleType articleType)
         {
             this.Code = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(), 0).ToString();
             this.Title = title;
             this.SummaryInfo = summaryInfo;
             this.Icon = icon;
             this.Content = content;
-          
+            this.ArticleType = articleType;
         }
 
         /// <summary>
         /// 自定义主键编码
         /// </summary>
-        public string Code { get; set; }
+        public string Code { get; private set; }
 
         /// <summary>
         /// 标题
