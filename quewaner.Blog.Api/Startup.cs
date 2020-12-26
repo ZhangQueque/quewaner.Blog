@@ -14,6 +14,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using System.Reflection;
+using quewaner.Blog.ApplicationCore.Services;
 
 namespace quewaner.Blog.Api
 {
@@ -36,11 +39,15 @@ namespace quewaner.Blog.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "quewaner.Blog.Api", Version = "v1" });
             });
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             //×¢ÅäÖÃÎÄ¼þÄÚÈÝ 
             services.Configure<MongoDatabaseSettings>(Configuration.GetSection("MongoDatabaseSettings"));
             services.AddSingleton<IMongoDatabaseSettings>(sp => sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
 
             services.AddScoped(typeof(IAsyncRepository<>),typeof(MongoDBRepository<>));
+
+            services.AddScoped<IArticleService, ArticleService>();
          }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

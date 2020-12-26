@@ -22,7 +22,7 @@ namespace quewaner.Blog.Infrastructure.Data
             var mongoClient = new MongoClient(mongoDatabaseSettings.ConnectionString);
             db = mongoClient.GetDatabase(mongoDatabaseSettings.DatabaseName);
             collection = db.GetCollection<T>(mongoDatabaseSettings.ArticleCollectionName);
-        }
+        } 
 
         public MongoDBRepository(IMongoDatabaseSettings mongoDatabaseSettings, string collectionName)
         {
@@ -36,7 +36,7 @@ namespace quewaner.Blog.Infrastructure.Data
         /// </summary>
         /// <param name="t">添加对象</param>
         /// <returns></returns>
-        public async Task<bool> InsertAsync(T t)
+        public async Task<bool> AddAsync(T t)
         {
             await collection.InsertOneAsync(t);
             return await IsExistsAsync(t.Id);

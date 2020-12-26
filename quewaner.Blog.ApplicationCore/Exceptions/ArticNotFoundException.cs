@@ -24,6 +24,11 @@ namespace quewaner.Blog.ApplicationCore.Exceptions
 
         }
 
+        public ArticleNotFoundException(string articleId, string requestUrl = "", string requestData = "", Exception exception = null) : base($"报错时间：{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffff")}文章没有找到，文章ID为：{articleId},请求地址为：{requestUrl},请求参数为:{requestData}", exception)
+        {
+
+        }
+
         public ArticleNotFoundException(string message, Exception innerException) : base(message, innerException)
         {
         }

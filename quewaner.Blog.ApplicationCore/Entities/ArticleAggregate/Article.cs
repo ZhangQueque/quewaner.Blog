@@ -80,6 +80,10 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         /// </summary>
         public ArticleType ArticleType { get; private set; }
 
+        public void SetArticleType(ArticleType articleType)
+        {
+            ArticleType = articleType;
+        }
 
     }
 }

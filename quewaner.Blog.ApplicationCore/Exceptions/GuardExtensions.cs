@@ -15,5 +15,15 @@ namespace quewaner.Blog.ApplicationCore.Exceptions
                 throw new ArticleNotFoundException(articleId,requestUrl,requestData);
             }
         }
+
+
+        public static void NullArticleType(this IGuardClause guardClause, string articleTypeId, ArticleType articleType, string requestUrl = "", string requestData = "")
+        {
+            if (articleType == null)
+            {
+                throw new ArticleTypeNotFoundException(articleTypeId, requestUrl, requestData);
+            }
+        }
+
     }
 }
