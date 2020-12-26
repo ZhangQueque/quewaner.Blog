@@ -22,6 +22,7 @@ namespace quewaner.Blog.ApplicationCore.Interfaces
         Task<int> GetCountAsync(Expression<Func<T, bool>> expression);
         Task<bool> InsertAsync(T t);
         Task<bool> IsExistsAsync(string id);
-        Task<bool> UpdateAsync(string id, T t);
+        Task<bool> ReplaceAsync(string id, T t);
+        Task<bool> UpdateAsync(string id, string field, string value);
     }
 }

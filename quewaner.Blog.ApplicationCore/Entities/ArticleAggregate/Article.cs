@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson;
-using quewaner.Blog.ApplicationCore.Entities.AuthorAggregate;
 using quewaner.Blog.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,18 +9,20 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
     /// <summary>
     /// 文章
     /// </summary>
-    public class Article:BaseEntity<string>,IAggregateRoot
+    public class Article : BaseEntity<string>, IAggregateRoot
     {
-
-        public Article(string title,string summaryInfo,string icon,string content, List<ArticleType> articleTypes,List<ArticleTag> articleTags)
+        public Article()
         {
-            this.Code = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(),0).ToString();
+
+        }
+        public Article(string title, string summaryInfo, string icon, string content, List<ArticleType> articleTypes, List<ArticleTag> articleTags)
+        {
+            this.Code = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(), 0).ToString();
             this.Title = title;
             this.SummaryInfo = summaryInfo;
             this.Icon = icon;
             this.Content = content;
-            _articleTypes=articleTypes;
-            _articleTags= articleTags;
+          
         }
 
         /// <summary>
@@ -75,22 +76,10 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         public DateTime UpdateTime { get; private set; } = DateTime.Now;
 
         /// <summary>
-        /// 作者信息
+        /// 文章类别
         /// </summary>
-        public Author Author { get; private set; }
+        public ArticleType ArticleType { get; private set; }
 
-        /// <summary>
-        /// 文章类别集合
-        /// </summary>
-        private List<ArticleType> _articleTypes = new List<ArticleType>();
 
-        public IReadOnlyCollection<ArticleType> ArticleTypes => _articleTypes.AsReadOnly();
-
-        /// <summary>
-        /// 文章标签集合
-        /// </summary>
-        private List<ArticleTag> _articleTags = new List<ArticleTag>();
-
-        public IReadOnlyCollection<ArticleTag> ArticleTags => _articleTags.AsReadOnly();
     }
 }

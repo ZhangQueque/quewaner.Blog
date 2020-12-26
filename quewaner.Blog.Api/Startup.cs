@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using quewaner.Blog.ApplicationCore.Interfaces;
 using quewaner.Blog.Infrastructure.Config;
+using quewaner.Blog.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace quewaner.Blog.Api
             services.Configure<MongoDatabaseSettings>(Configuration.GetSection("MongoDatabaseSettings"));
             services.AddSingleton<IMongoDatabaseSettings>(sp => sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
 
-        }
+            services.AddScoped(typeof(IAsyncRepository<>),typeof(MongoDBRepository<>));
+         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

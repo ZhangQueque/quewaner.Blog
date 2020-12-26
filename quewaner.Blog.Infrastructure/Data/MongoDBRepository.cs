@@ -50,20 +50,36 @@ namespace quewaner.Blog.Infrastructure.Data
         public async Task<bool> DeleteAsync(string id)
         {
             var deleteResult = await collection.DeleteOneAsync(m => m.Id == id);
+       
             return deleteResult.DeletedCount > 0;
         }
 
         /// <summary>
-        /// 更新
+        /// 整个对象更新
         /// </summary>
         /// <param name="id">要更新实体的主键</param>
         /// <param name="t">更新数据</param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(string id, T t)
+        public async Task<bool> ReplaceAsync(string id, T t)
         {
             var replaceOneResult = await collection.ReplaceOneAsync(m => m.Id == id, t);
             return replaceOneResult.ModifiedCount > 0;
         }
+
+        /// <summary>
+        /// 单个字段更新
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <param name="field">更新的字段</param>
+        /// <param name="value">更新的值</param>
+        /// <returns></returns>
+        public async Task<bool> UpdateAsync(string id, string field,string value)
+        {
+            var update = Builders<T>.Update.Set(field, value); //设置要更新的值
+            var  updateResult =await collection.UpdateOneAsync(m=>m.Id==id, update);
+            return updateResult.ModifiedCount > 0;
+        }
+
 
         /// <summary>
         /// 获取数据
@@ -75,13 +91,13 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <returns></returns>
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> expression, int page = 1, int size = 10, SortDefinition<T> sortDefinition = null)
         {
-            var filterDefinition = Builders<T>.Filter.Where(expression);
-            FindOptions<T> findOptions = new FindOptions<T>();
+            var filterDefinition = Builders<T>.Filter.Where(expression); //条件筛选
+            FindOptions<T> findOptions = new FindOptions<T>(); //设置分页排序
             if (sortDefinition != null)
                 findOptions.Sort = sortDefinition;
             findOptions.Skip = (page - 1) * size;
-            findOptions.Limit = size;
-            return (await collection.FindAsync(filterDefinition)).ToList();
+            findOptions.Limit = size;  
+            return (await collection.FindAsync(filterDefinition, findOptions)).ToList();
         }
 
         /// <summary>
