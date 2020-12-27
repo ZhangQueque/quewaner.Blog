@@ -21,7 +21,7 @@ namespace quewaner.Blog.Infrastructure.Data
         {
             var mongoClient = new MongoClient(mongoDatabaseSettings.ConnectionString);
             db = mongoClient.GetDatabase(mongoDatabaseSettings.DatabaseName);
-            collection = db.GetCollection<T>(mongoDatabaseSettings.ArticleCollectionName);
+            collection = db.GetCollection<T>(typeof(T).Name);
         } 
 
         public MongoDBRepository(IMongoDatabaseSettings mongoDatabaseSettings, string collectionName)
@@ -60,9 +60,9 @@ namespace quewaner.Blog.Infrastructure.Data
         /// <param name="id">要更新实体的主键</param>
         /// <param name="t">更新数据</param>
         /// <returns></returns>
-        public async Task<bool> ReplaceAsync(string id, T t)
+        public async Task<bool> ReplaceAsync( T t)
         {
-            var replaceOneResult = await collection.ReplaceOneAsync(m => m.Id == id, t);
+            var replaceOneResult = await collection.ReplaceOneAsync(m => m.Id == t.Id, t);
             return replaceOneResult.ModifiedCount > 0;
         }
 

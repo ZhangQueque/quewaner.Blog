@@ -80,9 +80,31 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         /// </summary>
         public ArticleType ArticleType { get; private set; }
 
+        /// <summary>
+        /// 设置文章类型
+        /// </summary>
+        /// <param name="articleType"></param>
         public void SetArticleType(ArticleType articleType)
         {
             ArticleType = articleType;
+        }
+
+        /// <summary>
+        /// 更改
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="summaryInfo"></param>
+        /// <param name="icon"></param>
+        /// <param name="content"></param>
+        /// <param name="articleType"></param>
+        public void Update(string title, string summaryInfo, string icon, string content, ArticleType articleType)
+        {
+            this.Title = title;
+            this.SummaryInfo = summaryInfo;
+            this.Icon = icon;
+            this.Content = content;
+            this.ArticleType = articleType;
+            this.UpdateTime = DateTime.Now;
         }
 
     }

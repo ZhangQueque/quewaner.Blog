@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>quewaner.Blog.Api</name>
+    </assembly>
+    <members>
+        <member name="T:quewaner.Blog.Api.Controllers.ArticleTypeController">
+            <summary>
+            文章分类
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.AddArticleAsync(quewaner.Blog.DataTransferObject.ArticleTypeDtos.AddArticleTypeDto)">
+            <summary>
+            添加文章分类
+            </summary>
+            <param name="addArticleTypeDto">添加对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.DeleteArticleAsync(System.String)">
+            <summary>
+            删除文章分类
+            </summary>
+            <param name="id">博客主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.GetArticleTypeLayuiTableAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取Layui表格数据
+            </summary>
+            <param name="pageParameters">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:quewaner.Blog.Api.Controllers.BlogController">
+            <summary>
+            博客
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.AddArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.AddArticleDto)">
+            <summary>
+            添加博客
+            </summary>
+            <param name="addArticleDto">添加对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.DeleteArticleAsync(System.String)">
+            <summary>
+            删除博客
+            </summary>
+            <param name="id">博客主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.UpdateArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.UpdateArticleDto)">
+            <summary>
+            更改文章
+            </summary>
+            <param name="updateArticleDto">更改对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.GetArticleAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取博客
+            </summary>
+            <param name="pageParameters">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.GetArticleLayuiTypeAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取Layui表格数据
+            </summary>
+            <param name="pageParameters"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -66,7 +66,7 @@ namespace quewaner.Blog.ApplicationCore.Interfaces
         /// <param name="id">要更新实体的主键</param>
         /// <param name="t">更新数据</param>
         /// <returns></returns>
-        Task<bool> ReplaceAsync(string id, T t);
+        Task<bool> ReplaceAsync( T t);
         /// <summary>
         /// 单个字段更新
         /// </summary>

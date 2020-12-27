@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Projects\quewaner\quewaner.Blog\quewaner.Blog.ApplicationCore\quewaner.Blog.ApplicationCore.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
@@ -16,6 +20,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="quewaner.Blog.ApplicationCore.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

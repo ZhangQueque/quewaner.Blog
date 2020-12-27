@@ -10,6 +10,8 @@ using quewaner.Blog.DataTransferObject.ArticleDto;
 using AutoMapper;
 using Ardalis.GuardClauses;
 using Newtonsoft.Json;
+using quewaner.Blog.DataTransferObject.Pages;
+using MongoDB.Driver;
 
 namespace quewaner.Blog.ApplicationCore.Services
 {
@@ -51,7 +53,91 @@ namespace quewaner.Blog.ApplicationCore.Services
             return null;
         }
 
+        /// <summary>
+        /// 删除文章
+        /// </summary>
+        /// <param name="id">博客ID</param>
+        /// <returns></returns>
+        public async Task<Article> DeleteArticleAsync(string id)
+        {
+            var article= await _articleRepository.GetByIdAsync(id);
+            if (article!=null)
+            {
+                if (await _articleRepository.DeleteAsync(id))
+                {
+                    return article;
+                }
+            }    
+            _logger.LogError($"文章删除失败。主键:{id},失败数据:{JsonConvert.SerializeObject(article)}");
+            return null;
+        }
 
-       
+        /// <summary>
+        /// 更改文章信息
+        /// </summary>
+        /// <param name="updateArticleDto">更改文章模型</param>
+        /// <returns></returns>
+        public async Task<Article> UpdateArticleAsync(UpdateArticleDto updateArticleDto)
+        {
+            ArticleType articleType = await _articleTypeRepository.GetByIdAsync(updateArticleDto.ArticleTypeId);
+            Guard.Against.NullArticleType(updateArticleDto.ArticleTypeId, articleType);
+
+            Article article =await _articleRepository.GetByIdAsync(updateArticleDto.Id) ;
+            Guard.Against.NullArticle(updateArticleDto.Id, article);
+            article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content, articleType);
+            if (await _articleRepository.ReplaceAsync(article))
+            {
+                return article;
+            }
+            _logger.LogError($"文章更新失败。失败数据:{JsonConvert.SerializeObject(article)}");
+            return null;
+        }
+
+
+
+        /// <summary>
+        /// 获取文章分页数据
+        /// </summary>
+        /// <param name="pageParameters">分页查询参数</param>
+        /// <returns></returns>
+        public async Task<PageList<Article>> GetArticlesAsync(PageParameters pageParameters)
+        {
+            IReadOnlyList<Article> list = null;
+
+            int count = 0;
+            //在这里判断文章类型是否为空，而不是在lamada中判断，是因为mongodb会去根据这个ID查询，但是发现这个ID并不是一个有效的24位十六进制字符串  ，会报错
+            if (!string.IsNullOrEmpty(pageParameters.ArticleTypeId) )
+            {
+                  list = await _articleRepository.GetAsync(
+                   m => string.IsNullOrEmpty(pageParameters.Keyword)
+                  || m.Title.Contains(pageParameters.Keyword)
+                  || m.SummaryInfo.Contains(pageParameters.Keyword)
+                  && m.ArticleType.Id == pageParameters.ArticleTypeId, pageParameters.Page, pageParameters.Limit, Builders<Article>.Sort.Descending(sort => sort.CreatTime));
+
+                  count = await _articleRepository.GetCountAsync(
+                   m => string.IsNullOrEmpty(pageParameters.Keyword)
+                   || m.Title.Contains(pageParameters.Keyword)
+                   || m.SummaryInfo.Contains(pageParameters.Keyword)
+                   && m.ArticleType.Id == pageParameters.ArticleTypeId
+                   );
+            }
+            else            {
+                list = await _articleRepository.GetAsync(
+                 m => string.IsNullOrEmpty(pageParameters.Keyword)
+                || m.Title.Contains(pageParameters.Keyword)
+                || m.SummaryInfo.Contains(pageParameters.Keyword)
+              , pageParameters.Page, pageParameters.Limit, Builders<Article>.Sort.Descending(sort => sort.CreatTime));
+
+                count = await _articleRepository.GetCountAsync(
+                 m => string.IsNullOrEmpty(pageParameters.Keyword)
+                 || m.Title.Contains(pageParameters.Keyword)
+                 || m.SummaryInfo.Contains(pageParameters.Keyword)            
+                 );
+            }
+
+           
+            return new PageList<Article>(list,pageParameters.Page,pageParameters.Limit,count);
+        }
+
     }
 }

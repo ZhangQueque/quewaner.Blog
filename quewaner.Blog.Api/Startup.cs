@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using System.Reflection;
 using quewaner.Blog.ApplicationCore.Services;
+using System.IO;
 
 namespace quewaner.Blog.Api
 {
@@ -37,6 +38,10 @@ namespace quewaner.Blog.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "quewaner.Blog.Api", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.Api.xml"));
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.ApplicationCore.xml"));
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.DataTransferObject.xml"));
+
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

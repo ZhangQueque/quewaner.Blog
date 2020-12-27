@@ -5,10 +5,14 @@ using System.Text;
 namespace quewaner.Blog.DataTransferObject.ArticleDto
 {
     /// <summary>
-    /// 文章添加模型
+    /// 更改文章模型
     /// </summary>
-    public class AddArticleDto
+    public class UpdateArticleDto
     {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string Id { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
@@ -29,5 +33,7 @@ namespace quewaner.Blog.DataTransferObject.ArticleDto
         /// 类别ID
         /// </summary>
         public string ArticleTypeId { get; set; }
+
+      
     }
 }
