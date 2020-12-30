@@ -129,6 +129,13 @@
             <param name="id">博客ID</param>
             <returns></returns>
         </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.GetArticleByIdAsync(System.String)">
+            <summary>
+            根据主键获取文章
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
         <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.GetArticlesAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
             <summary>
             获取文章分页数据
@@ -219,6 +226,11 @@
             <param name="value">更新的值</param>
             <returns></returns>
         </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Profiles.AutoMapperProfile">
+            <summary>
+            AutoMapper映射
+            </summary>
+        </member>
         <member name="T:quewaner.Blog.ApplicationCore.Services.ArticleService">
             <summary>
             文章服务
@@ -250,6 +262,13 @@
             获取文章分页数据
             </summary>
             <param name="pageParameters">分页查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.GetArticleByIdAsync(System.String)">
+            <summary>
+            根据ID获取文章
+            </summary>
+            <param name="id">主键</param>
             <returns></returns>
         </member>
     </members>

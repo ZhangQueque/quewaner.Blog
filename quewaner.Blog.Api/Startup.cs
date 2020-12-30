@@ -35,7 +35,7 @@ namespace quewaner.Blog.Api
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(c => //ÅäÖÃSwaggerÎÄÕÂ×¢ÊÍ
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "quewaner.Blog.Api", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.Api.xml"));

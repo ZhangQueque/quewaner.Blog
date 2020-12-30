@@ -12,6 +12,7 @@ using Ardalis.GuardClauses;
 using Newtonsoft.Json;
 using quewaner.Blog.DataTransferObject.Pages;
 using MongoDB.Driver;
+using quewaner.Blog.DataTransferObject.ArticleDtos;
 
 namespace quewaner.Blog.ApplicationCore.Services
 {
@@ -39,15 +40,17 @@ namespace quewaner.Blog.ApplicationCore.Services
         /// </summary>
         /// <param name="addArticleDto">添加文章对象</param>
         /// <returns></returns>
-        public async Task<Article> AddArticleAsync(AddArticleDto addArticleDto)
+        public async Task<ShowArticleDto> AddArticleAsync(AddArticleDto addArticleDto)
         {
             ArticleType articleType = await _articleTypeRepository.GetByIdAsync(addArticleDto.ArticleTypeId);
             Guard.Against.NullArticleType(addArticleDto.ArticleTypeId, articleType);
             var article = _mapper.Map<Article>(addArticleDto);
             article.SetArticleType(articleType);
+            //返回展示模型
             if (await _articleRepository.AddAsync(article))
             {
-                return article;
+                var showArticle = _mapper.Map<ShowArticleDto>(article);
+                return showArticle;
             }
             _logger.LogError($"文章添加失败。失败数据:{JsonConvert.SerializeObject(article)}");
             return null;
@@ -58,14 +61,16 @@ namespace quewaner.Blog.ApplicationCore.Services
         /// </summary>
         /// <param name="id">博客ID</param>
         /// <returns></returns>
-        public async Task<Article> DeleteArticleAsync(string id)
+        public async Task<ShowArticleDto> DeleteArticleAsync(string id)
         {
             var article= await _articleRepository.GetByIdAsync(id);
             if (article!=null)
-            {
+
+            {  //返回展示模型
+                var showArticle = _mapper.Map<ShowArticleDto>(article);
                 if (await _articleRepository.DeleteAsync(id))
                 {
-                    return article;
+                    return showArticle;
                 }
             }    
             _logger.LogError($"文章删除失败。主键:{id},失败数据:{JsonConvert.SerializeObject(article)}");
@@ -77,17 +82,21 @@ namespace quewaner.Blog.ApplicationCore.Services
         /// </summary>
         /// <param name="updateArticleDto">更改文章模型</param>
         /// <returns></returns>
-        public async Task<Article> UpdateArticleAsync(UpdateArticleDto updateArticleDto)
+        public async Task<ShowArticleDto> UpdateArticleAsync(UpdateArticleDto updateArticleDto)
         {
             ArticleType articleType = await _articleTypeRepository.GetByIdAsync(updateArticleDto.ArticleTypeId);
             Guard.Against.NullArticleType(updateArticleDto.ArticleTypeId, articleType);
 
             Article article =await _articleRepository.GetByIdAsync(updateArticleDto.Id) ;
             Guard.Against.NullArticle(updateArticleDto.Id, article);
+
             article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content, articleType);
+           
             if (await _articleRepository.ReplaceAsync(article))
-            {
-                return article;
+            {  
+                //返回展示模型
+                var showArticle = _mapper.Map<ShowArticleDto>(article);
+                return showArticle;
             }
             _logger.LogError($"文章更新失败。失败数据:{JsonConvert.SerializeObject(article)}");
             return null;
@@ -100,7 +109,7 @@ namespace quewaner.Blog.ApplicationCore.Services
         /// </summary>
         /// <param name="pageParameters">分页查询参数</param>
         /// <returns></returns>
-        public async Task<PageList<Article>> GetArticlesAsync(PageParameters pageParameters)
+        public async Task<PageList<ShowArticleDto>> GetArticlesAsync(PageParameters pageParameters)
         {
             IReadOnlyList<Article> list = null;
 
@@ -135,8 +144,25 @@ namespace quewaner.Blog.ApplicationCore.Services
                  );
             }
 
-           
-            return new PageList<Article>(list,pageParameters.Page,pageParameters.Limit,count);
+            var showArticles = _mapper.Map<IReadOnlyList<ShowArticleDto>>(list);
+
+            return new PageList<ShowArticleDto>(showArticles, pageParameters.Page,pageParameters.Limit,count);
+        }
+
+        /// <summary>
+        /// 根据ID获取文章
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <returns></returns>
+        public async Task<ShowArticleDto> GetArticleByIdAsync(string id)
+        {
+
+            Article article = await _articleRepository.GetByIdAsync(id);
+            Guard.Against.NullArticle(id, article);
+            //返回展示模型
+            var showArticle = _mapper.Map<ShowArticleDto>(article);
+
+            return showArticle;
         }
 
     }

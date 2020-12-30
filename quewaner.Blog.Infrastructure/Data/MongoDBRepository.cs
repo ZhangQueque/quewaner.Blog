@@ -21,15 +21,11 @@ namespace quewaner.Blog.Infrastructure.Data
         {
             var mongoClient = new MongoClient(mongoDatabaseSettings.ConnectionString);
             db = mongoClient.GetDatabase(mongoDatabaseSettings.DatabaseName);
+            //配置文件集合的名称（已不使用）
+            //collection = db.GetCollection<T>(mongoDatabaseSettings.ArticleCollectionName);
+            //根据 T 实体名来命名集合名称
             collection = db.GetCollection<T>(typeof(T).Name);
         } 
-
-        public MongoDBRepository(IMongoDatabaseSettings mongoDatabaseSettings, string collectionName)
-        {
-            var mongoClient = new MongoClient(mongoDatabaseSettings.ConnectionString);
-            db = mongoClient.GetDatabase(mongoDatabaseSettings.DatabaseName);
-            collection = db.GetCollection<T>(collectionName);
-        }
 
         /// <summary>
         /// 添加

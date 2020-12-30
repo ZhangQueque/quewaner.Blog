@@ -70,5 +70,12 @@
             <param name="pageParameters"></param>
             <returns></returns>
         </member>
+        <member name="M:quewaner.Blog.Api.Controllers.BlogController.GetArticleByIdAsync(System.String)">
+            <summary>
+            根据ID获取文章
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

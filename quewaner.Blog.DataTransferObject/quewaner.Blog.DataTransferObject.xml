@@ -69,6 +69,71 @@
             类别ID
             </summary>
         </member>
+        <member name="T:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto">
+            <summary>
+            文章展示模型
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Code">
+            <summary>
+            自定义主键编码
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.SummaryInfo">
+            <summary>
+            摘要
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Icon">
+            <summary>
+            头图
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.ReadNumber">
+            <summary>
+            阅读数量
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.PollNumber">
+            <summary>
+            点赞数量
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.CreatTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDtos.ShowArticleDto.ArticleType">
+            <summary>
+            文章类别
+            </summary>
+        </member>
         <member name="T:quewaner.Blog.DataTransferObject.ArticleTypeDtos.AddArticleTypeDto">
             <summary>
             添加文章类型模型
@@ -85,6 +150,31 @@
             </summary>
         </member>
         <member name="P:quewaner.Blog.DataTransferObject.ArticleTypeDtos.AddArticleTypeDto.SummaryInfo">
+            <summary>
+            摘要信息
+            </summary>
+        </member>
+        <member name="T:quewaner.Blog.DataTransferObject.ArticleTypeDtos.ShowArticleTypeDto">
+            <summary>
+            文章类别展示模型
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleTypeDtos.ShowArticleTypeDto.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleTypeDtos.ShowArticleTypeDto.Name">
+            <summary>
+            类别名称
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleTypeDtos.ShowArticleTypeDto.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleTypeDtos.ShowArticleTypeDto.SummaryInfo">
             <summary>
             摘要信息
             </summary>
