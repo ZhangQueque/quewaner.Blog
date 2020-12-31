@@ -5,15 +5,14 @@ using System.Text;
 namespace quewaner.Blog.DataTransferObject.ArticleTypeDtos
 {
     /// <summary>
-    /// 文章类别展示模型
+    /// 更改文章类型模型
     /// </summary>
-    public class ShowArticleTypeDto
+    public class UpdateArticleTypeDto
     {
         /// <summary>
         /// 主键
         /// </summary>
         public string Id { get; set; }
-
         /// <summary>
         /// 类别名称
         /// </summary>
@@ -27,13 +26,10 @@ namespace quewaner.Blog.DataTransferObject.ArticleTypeDtos
         /// </summary>
         public string SummaryInfo { get; set; }
 
+
         /// <summary>
         /// 当前状态1启用 ， 0 禁用
         /// </summary>
         public int Status { get; private set; } = 1;
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
     }
 }

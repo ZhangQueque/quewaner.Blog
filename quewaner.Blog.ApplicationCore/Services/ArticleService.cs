@@ -90,7 +90,7 @@ namespace quewaner.Blog.ApplicationCore.Services
             Article article =await _articleRepository.GetByIdAsync(updateArticleDto.Id) ;
             Guard.Against.NullArticle(updateArticleDto.Id, article);
 
-            article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content, articleType);
+            article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content,updateArticleDto.Status, articleType);
            
             if (await _articleRepository.ReplaceAsync(article))
             {  

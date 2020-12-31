@@ -42,21 +42,22 @@ namespace quewaner.Blog.Api.Controllers
         /// <param name="addArticleTypeDto">添加对象</param>
         /// <returns></returns>
         [HttpPost("add")]
-        public async Task<ActionResult<ResponseResult<ArticleType>>> AddArticleAsync([FromBody] AddArticleTypeDto addArticleTypeDto)
+        public async Task<ActionResult<ResponseResult<ShowArticleTypeDto>>> AddArticleTypeAsync([FromBody] AddArticleTypeDto addArticleTypeDto)
         {
             try
             {
                 ArticleType articleType = _mapper.Map<ArticleType>(addArticleTypeDto);
                 if (await _articleTypeRepository.AddAsync(articleType))
                 {
-                    return new ResponseResult<ArticleType>(1, "添加成功", articleType);
+                    var showArticleType  = _mapper.Map<ShowArticleTypeDto>(articleType);
+                    return new ResponseResult<ShowArticleTypeDto>(1, "添加成功", showArticleType);
                 }
-                return new ResponseResult<ArticleType>(0, "添加失败", null);
+                return new ResponseResult<ShowArticleTypeDto>(0, "添加失败", null);
             }
             catch (Exception ex)
             {
                 _logger.LogCritical(ex, ex.Message);
-                return new ResponseResult<ArticleType>(0, ex.Message, null);
+                return new ResponseResult<ShowArticleTypeDto>(0, ex.Message, null);
             }
         }
 
@@ -66,7 +67,7 @@ namespace quewaner.Blog.Api.Controllers
         /// <param name="id">博客主键</param>
         /// <returns></returns>
         [HttpGet("delete")]
-        public async Task<ActionResult<ResponseResult<ArticleType>>> DeleteArticleAsync(string id)
+        public async Task<ActionResult<ResponseResult<ShowArticleTypeDto>>> DeleteArticleTypeAsync(string id)
         {
             try
             {
@@ -75,17 +76,70 @@ namespace quewaner.Blog.Api.Controllers
                 {
                     if (await _articleTypeRepository.DeleteAsync(id))
                     {
-                        return new ResponseResult<ArticleType>(1, "删除成功", articleType);
+                        var showArticleType = _mapper.Map<ShowArticleTypeDto>(articleType);
+
+                        return new ResponseResult<ShowArticleTypeDto>(1, "删除成功", showArticleType);
 
                     }
                 }
 
-                return new ResponseResult<ArticleType>(0, "删除失败", null);
+                return new ResponseResult<ShowArticleTypeDto>(0, "删除失败", null);
             }
             catch (Exception ex)
             {
                 _logger.LogCritical(ex, ex.Message);
-                return new ResponseResult<ArticleType>(0, ex.Message, null);
+                return new ResponseResult<ShowArticleTypeDto>(0, ex.Message, null);
+            }
+        }
+
+
+        /// <summary>
+        /// 更改文章类别
+        /// </summary>
+        /// <param name="updateArticle"></param>
+        /// <returns></returns>
+        [HttpPost("update")]
+        public async Task<ActionResult<ResponseResult<ShowArticleTypeDto>>> UpdateArticleTypeAsync([FromBody] UpdateArticleTypeDto updateArticle)
+        {
+            try
+            {
+                ArticleType articleType = await _articleTypeRepository.GetByIdAsync(updateArticle.Id);
+                Guard.Against.NullArticleType(updateArticle.Id, articleType);
+
+                articleType.Update(updateArticle.Name, updateArticle.Icon, updateArticle.SummaryInfo, updateArticle.Status);
+                if (await _articleTypeRepository.ReplaceAsync(articleType))
+                {
+                    var showArticleType = _mapper.Map<ShowArticleTypeDto>(articleType);
+                    return new ResponseResult<ShowArticleTypeDto>(1, "更改成功", showArticleType);
+                }
+                return new ResponseResult<ShowArticleTypeDto>(0, "更改失败", null);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex, ex.Message);
+                return new ResponseResult<ShowArticleTypeDto>(0, ex.Message, null);
+            }
+        }
+
+        /// <summary>
+        /// 获取文章类别
+        /// </summary>
+        /// <param name="pageParameters">查询参数</param>
+        /// <returns></returns>
+        [HttpGet("get")]
+        public async Task<ActionResult<ResponseResult<PageList<ShowArticleTypeDto>>>> GetArticleTypeAsync([FromQuery] PageParameters pageParameters)
+        {
+            try
+            {
+                var list = await _articleTypeRepository.GetAsync(m=>true,pageParameters.Page,pageParameters.Limit);
+                var count = await _articleTypeRepository.GetCountAsync();
+                var showList = _mapper.Map<List<ShowArticleTypeDto>>(list);
+                return new ResponseResult<PageList<ShowArticleTypeDto>>(1, "查询成功", new PageList<ShowArticleTypeDto>(showList, pageParameters.Page,pageParameters.Limit,count));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex, ex.Message);
+                return new ResponseResult<PageList<ShowArticleTypeDto>>(0, ex.Message, null);
             }
         }
 
@@ -97,12 +151,38 @@ namespace quewaner.Blog.Api.Controllers
         /// <param name="pageParameters">查询参数</param>
         /// <returns></returns>
         [HttpGet("layui/table")]
-        public async Task<ActionResult<LayuiTableModel<List<ArticleType>>>> GetArticleTypeLayuiTableAsync([FromQuery] PageParameters pageParameters)
+        public async Task<ActionResult<LayuiTableModel<List<ShowArticleTypeDto>>>> GetArticleTypeLayuiTableAsync([FromQuery] PageParameters pageParameters)
         {
 
             var list = await _articleTypeRepository.GetAsync(m => true, pageParameters.Page, pageParameters.Limit);
             int count = await _articleTypeRepository.GetCountAsync();
-            return new LayuiTableModel<List<ArticleType>>(0, "", list.ToList(), count);
+
+            var showList = _mapper.Map<List<ShowArticleTypeDto>>(list);
+            return new LayuiTableModel<List<ShowArticleTypeDto>>(0, "", showList, count);
+        }
+
+
+        /// <summary>
+        /// 根据id获取文章类别
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("id")]
+        public async Task<ActionResult<ResponseResult<ShowArticleTypeDto>>> GetArticleTypeByIdAsync(string id)
+        {
+            try
+            {
+                var articleType = await _articleTypeRepository.GetByIdAsync(id);
+                Guard.Against.NullArticleType(articleType.Id, articleType);
+                var showArticleType = _mapper.Map<ShowArticleTypeDto>(articleType);
+
+                return new ResponseResult<ShowArticleTypeDto>(1, $"{showArticleType.Name}查询成功", showArticleType);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex, ex.Message);
+                return new ResponseResult<ShowArticleTypeDto>(0, ex.Message, null);
+            }
         }
 
     }

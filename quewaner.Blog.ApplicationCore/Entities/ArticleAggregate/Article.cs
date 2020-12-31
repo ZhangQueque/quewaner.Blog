@@ -92,12 +92,13 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
         /// <summary>
         /// 更改
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="summaryInfo"></param>
-        /// <param name="icon"></param>
-        /// <param name="content"></param>
-        /// <param name="articleType"></param>
-        public void Update(string title, string summaryInfo, string icon, string content, ArticleType articleType)
+        /// <param name="title">标题</param>
+        /// <param name="summaryInfo">简介</param>
+        /// <param name="icon">头图</param>
+        /// <param name="content">内容</param>
+        /// <param name="articleType">文章类别</param>
+        /// <param name="status">文章状态</param>
+        public void Update(string title, string summaryInfo, string icon, string content,int status, ArticleType articleType)
         {
             this.Title = title;
             this.SummaryInfo = summaryInfo;
@@ -105,6 +106,7 @@ namespace quewaner.Blog.ApplicationCore.Entities.ArticleAggregate
             this.Content = content;
             this.ArticleType = articleType;
             this.UpdateTime = DateTime.Now;
+            this.Status = status;
         }
 
     }
