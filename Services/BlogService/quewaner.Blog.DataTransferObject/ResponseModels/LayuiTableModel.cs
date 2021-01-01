@@ -14,7 +14,7 @@
             Count = count;
         }
         /// <summary>
-        /// 0成功 1失败 
+        /// Layui特定code为0成功，请不要和其他Api返回状态码混淆 0成功 1失败 
         /// </summary>
         public int Code { get; set; }
 

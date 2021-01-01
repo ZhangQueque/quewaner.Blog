@@ -39,6 +39,18 @@ namespace quewaner.Blog.CMS.Controllers
             return Ok(new { success = 0, message = "成功" });
         }
 
+
+        [HttpPost]
+        public IActionResult File2([FromForm] IFormFileCollection file)
+        {
+            var data = Request;
+            var a = Request.Form.Files;
+           
+                return Ok(new { code = 0, msg = "成功", data= new {src = "http://5b0988e595225.cdn.sohucs.com/images/20200420/b0ab35ee97b54d6b8963e9c989c57388.png" }});
+           
+           
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

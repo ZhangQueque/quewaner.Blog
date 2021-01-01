@@ -397,3 +397,66 @@
 2021-01-02 06:14:03.3392 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
 2021-01-02 06:14:03.3523 Info Configuration initialized.
 2021-01-02 06:14:03.3523 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:14:51.1260 Info Message Template Auto Format enabled
+2021-01-02 06:14:51.1572 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:14:51.1619 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:14:51.1619 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:14:51.1839 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:14:51.1978 Info Configuration initialized.
+2021-01-02 06:14:51.1978 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:17:29.2660 Info Message Template Auto Format enabled
+2021-01-02 06:17:29.2955 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:17:29.2999 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:17:29.2999 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:17:29.3196 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:17:29.3322 Info Configuration initialized.
+2021-01-02 06:17:29.3322 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:25:03.4893 Info Message Template Auto Format enabled
+2021-01-02 06:25:03.5216 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:25:03.5216 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:25:03.5216 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:25:03.5456 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:25:03.5581 Info Configuration initialized.
+2021-01-02 06:25:03.5581 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:28:37.8257 Info Message Template Auto Format enabled
+2021-01-02 06:28:37.8550 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:28:37.8550 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:28:37.8642 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:28:37.8796 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:28:37.8923 Info Configuration initialized.
+2021-01-02 06:28:37.8923 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:51:19.8721 Info Message Template Auto Format enabled
+2021-01-02 06:51:19.9155 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:51:19.9155 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:51:19.9299 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:51:19.9507 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:51:19.9652 Info Configuration initialized.
+2021-01-02 06:51:19.9652 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:51:41.4781 Info Message Template Auto Format enabled
+2021-01-02 06:51:41.5161 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:51:41.5206 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:51:41.5206 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:51:41.5424 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:51:41.5561 Info Configuration initialized.
+2021-01-02 06:51:41.5561 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 06:58:51.2719 Info Message Template Auto Format enabled
+2021-01-02 06:58:51.3019 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 06:58:51.3019 Info Adding target FileTarget(Name=logFile)
+2021-01-02 06:58:51.3019 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 06:58:51.3263 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 06:58:51.3405 Info Configuration initialized.
+2021-01-02 06:58:51.3405 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 07:44:59.0764 Info Message Template Auto Format enabled
+2021-01-02 07:44:59.1058 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 07:44:59.1117 Info Adding target FileTarget(Name=logFile)
+2021-01-02 07:44:59.1117 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 07:44:59.1313 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 07:44:59.1439 Info Configuration initialized.
+2021-01-02 07:44:59.1439 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False
+2021-01-02 07:45:26.7017 Info Message Template Auto Format enabled
+2021-01-02 07:45:26.7308 Warn Skipping unrecognized property 'form.at=tostring` for ${exception} (NLog.LayoutRenderers.ExceptionLayoutRenderer)
+2021-01-02 07:45:26.7308 Info Adding target FileTarget(Name=logFile)
+2021-01-02 07:45:26.7395 Info Adding target FileTarget(Name=logFile-web)
+2021-01-02 07:45:26.7546 Info Validating config: TargetNames=logFile, logFile-web, ConfigItems=55, FilePath=D:\Projects\quewaner\quewaner.Blog\Services\BlogService\quewaner.Blog.Api\bin\Debug\net5.0\NLog.config
+2021-01-02 07:45:26.7670 Info Configuration initialized.
+2021-01-02 07:45:26.7670 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.2.11786. Product version: 4.7.2+024896f64b840a743d3fd89e29c2186681e7795f. GlobalAssemblyCache: False

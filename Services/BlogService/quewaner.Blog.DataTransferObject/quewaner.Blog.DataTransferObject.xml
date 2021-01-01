@@ -257,7 +257,7 @@
         </member>
         <member name="P:quewaner.Blog.DataTransferObject.ResponseModels.LayuiTableModel`1.Code">
             <summary>
-            0成功 1失败 
+            Layui特定code为0成功，请不要和其他Api返回状态码混淆 0成功 1失败 
             </summary>
         </member>
         <member name="T:quewaner.Blog.DataTransferObject.ResponseModel.ResponseResult`1">
