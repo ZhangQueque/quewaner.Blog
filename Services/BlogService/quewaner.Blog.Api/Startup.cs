@@ -18,6 +18,7 @@ using AutoMapper;
 using System.Reflection;
 using quewaner.Blog.ApplicationCore.Services;
 using System.IO;
+using quewaner.Blog.ApplicationCore.Profiles;
 
 namespace quewaner.Blog.Api
 {
@@ -48,7 +49,7 @@ namespace quewaner.Blog.Api
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.DataTransferObject.xml"));
 
             });
-
+       
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //×¢ÅäÖÃÎÄ¼þÄÚÈÝ            

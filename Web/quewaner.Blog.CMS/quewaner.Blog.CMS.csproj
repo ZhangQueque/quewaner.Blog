@@ -19,8 +19,4 @@
     <Folder Include="Data\Entities\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj" />
-  </ItemGroup>
-
 </Project>

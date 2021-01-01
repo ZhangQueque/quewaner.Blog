@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace quewaner.Blog.DataTransferObject.Pages
 {
@@ -10,11 +7,11 @@ namespace quewaner.Blog.DataTransferObject.Pages
     /// 分页帮助类
     /// </summary>
     /// <typeparam name="T">对象</typeparam>
-    public   class PageList<T>
-        where T:class
+    public class PageList<T>
+        where T : class
     {
 
-        public PageList(IReadOnlyList<T> items,int pageIndex,int pageSize,int count)
+        public PageList(IReadOnlyList<T> items, int pageIndex, int pageSize, int count)
         {
             Items = items;
             PageIndex = pageIndex;

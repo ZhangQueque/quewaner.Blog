@@ -1,7 +1,5 @@
 ﻿using quewaner.Blog.DataTransferObject.ArticleTypeDtos;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace quewaner.Blog.DataTransferObject.ArticleDtos
 {
@@ -54,7 +52,7 @@ namespace quewaner.Blog.DataTransferObject.ArticleDtos
         /// <summary>
         /// 当前状态1启用 ， 0 禁用
         /// </summary>
-        public int Status { get; private set; } 
+        public int Status { get; private set; }
 
         /// <summary>
         /// 创建时间

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace quewaner.Blog.DataTransferObject.ResponseModel
+﻿namespace quewaner.Blog.DataTransferObject.ResponseModel
 {
-   /// <summary>
-   /// 响应结果
-   /// </summary>
-   /// <typeparam name="T"></typeparam>
-   public  class ResponseResult<T>
+    /// <summary>
+    /// 响应结果
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class ResponseResult<T>
     {
-        public ResponseResult(int code ,string message="",T data =default)
+        public ResponseResult(int code, string message = "", T data = default)
         {
             Code = code;
             Message = message;

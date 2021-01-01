@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.Api", "quewaner.Blog.Api\quewaner.Blog.Api.csproj", "{9D993402-6843-462E-BFF2-47A70B53AFCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.Api", "Services\BlogService\quewaner.Blog.Api\quewaner.Blog.Api.csproj", "{9D993402-6843-462E-BFF2-47A70B53AFCF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.Infrastructure", "quewaner.Blog.Infrastructure\quewaner.Blog.Infrastructure.csproj", "{0F4F007F-71A0-42BC-BF9D-05AE59E1E5B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.Infrastructure", "Services\BlogService\quewaner.Blog.Infrastructure\quewaner.Blog.Infrastructure.csproj", "{0F4F007F-71A0-42BC-BF9D-05AE59E1E5B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.ApplicationCore", "quewaner.Blog.ApplicationCore\quewaner.Blog.ApplicationCore.csproj", "{4B66CA7B-F962-42BD-9F8A-09152A1DC2DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.ApplicationCore", "Services\BlogService\quewaner.Blog.ApplicationCore\quewaner.Blog.ApplicationCore.csproj", "{4B66CA7B-F962-42BD-9F8A-09152A1DC2DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.DataTransferObject", "quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj", "{8A917DD5-9884-4FD4-93E3-7C12E3500E53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.DataTransferObject", "Services\BlogService\quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj", "{8A917DD5-9884-4FD4-93E3-7C12E3500E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quewaner.Blog.CMS", "quewaner.Blog.CMS\quewaner.Blog.CMS.csproj", "{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.CMS", "Web\quewaner.Blog.CMS\quewaner.Blog.CMS.csproj", "{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2F7C8097-17A8-4E4E-A087-1FD6A700471C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlogService", "BlogService", "{28669CFB-D52E-4BA4-829B-8EC79D112559}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2B35D11D-D420-4848-B854-05F53DBDC64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +48,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D993402-6843-462E-BFF2-47A70B53AFCF} = {28669CFB-D52E-4BA4-829B-8EC79D112559}
+		{0F4F007F-71A0-42BC-BF9D-05AE59E1E5B2} = {28669CFB-D52E-4BA4-829B-8EC79D112559}
+		{4B66CA7B-F962-42BD-9F8A-09152A1DC2DF} = {28669CFB-D52E-4BA4-829B-8EC79D112559}
+		{8A917DD5-9884-4FD4-93E3-7C12E3500E53} = {28669CFB-D52E-4BA4-829B-8EC79D112559}
+		{C65107C0-D767-4EB6-AAEB-A6259C5F71AD} = {2B35D11D-D420-4848-B854-05F53DBDC64A}
+		{28669CFB-D52E-4BA4-829B-8EC79D112559} = {2F7C8097-17A8-4E4E-A087-1FD6A700471C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8AFE5849-058E-400A-B4EA-DEF2A89DC550}

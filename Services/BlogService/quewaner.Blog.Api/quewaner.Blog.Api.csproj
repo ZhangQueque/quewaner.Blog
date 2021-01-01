@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Projects\quewaner\quewaner.Blog\quewaner.Blog.Api\quewaner.Blog.Api.xml</DocumentationFile>
+    <DocumentationFile>quewaner.Blog.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;CS1591</NoWarn>
   </PropertyGroup>
 
@@ -21,11 +21,6 @@
     <ProjectReference Include="..\quewaner.Blog.ApplicationCore\quewaner.Blog.ApplicationCore.csproj" />
     <ProjectReference Include="..\quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj" />
     <ProjectReference Include="..\quewaner.Blog.Infrastructure\quewaner.Blog.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

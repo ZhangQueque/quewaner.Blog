@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>quewaner.Blog.ApplicationCore</name>
+    </assembly>
+    <members>
+        <member name="T:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article">
+            <summary>
+            文章
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Code">
+            <summary>
+            自定义主键编码
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.SummaryInfo">
+            <summary>
+            摘要
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Icon">
+            <summary>
+            头图
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.ReadNumber">
+            <summary>
+            阅读数量
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.PollNumber">
+            <summary>
+            点赞数量
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.CreatTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.ArticleType">
+            <summary>
+            文章类别
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.SetArticleType(quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType)">
+            <summary>
+            设置文章类型
+            </summary>
+            <param name="articleType"></param>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Update(System.String,System.String,System.String,System.String,System.Int32,quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType)">
+            <summary>
+            更改
+            </summary>
+            <param name="title">标题</param>
+            <param name="summaryInfo">简介</param>
+            <param name="icon">头图</param>
+            <param name="content">内容</param>
+            <param name="articleType">文章类别</param>
+            <param name="status">文章状态</param>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType">
+            <summary>
+            文章类别
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Name">
+            <summary>
+            类别名称
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.SummaryInfo">
+            <summary>
+            摘要信息
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.CreatTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Update(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            更改
+            </summary>
+            <param name="name">名称</param>
+            <param name="icon">图标</param>
+            <param name="summaryInfo">简介</param>
+            <param name="status">状态</param>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.BaseEntity`1.Id">
+            <summary>
+            让ObjectId 以string的方式传输
+            </summary>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Exceptions.ArticleNotFoundException">
+            <summary>
+            自定义文章异常类
+            </summary>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Interfaces.IArticleService">
+            <summary>
+            文章服务接口
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.AddArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.AddArticleDto)">
+            <summary>
+            添加文章
+            </summary>
+            <param name="addArticleDto">添加文章对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.DeleteArticleAsync(System.String)">
+            <summary>
+            删除文章
+            </summary>
+            <param name="id">博客ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.GetArticleByIdAsync(System.String)">
+            <summary>
+            根据主键获取文章
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.GetArticlesAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取文章分页数据
+            </summary>
+            <param name="pageParameters">分页查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IArticleService.UpdateArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.UpdateArticleDto)">
+            <summary>
+            更改文章信息
+            </summary>
+            <param name="updateArticleDto">更改文章模型</param>
+            <returns></returns>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1">
+            <summary>
+            仓储接口
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.DeleteAsync(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32,MongoDB.Driver.SortDefinition{`0})">
+            <summary>
+            获取数据
+            </summary>
+            <param name="expression">条件</param>
+            <param name="page">页索引</param>
+            <param name="size">每页显示数量</param>
+            <param name="sortDefinition">排序</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.GetByIdAsync(System.String)">
+            <summary>
+            是否存在
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.GetCountAsync">
+            <summary>
+             /// <summary>
+            获取总数量
+            </summary>
+            <returns></returns>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.GetCountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            获取符合条件的总数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.AddAsync(`0)">
+            <summary>
+            添加
+            </summary>
+            <param name="t">添加对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.IsExistsAsync(System.String)">
+            <summary>
+            是否存在
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.ReplaceAsync(`0)">
+            <summary>
+            整个对象更新
+            </summary>
+            <param name="id">要更新实体的主键</param>
+            <param name="t">更新数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Interfaces.IAsyncRepository`1.UpdateAsync(System.String,System.String,System.String)">
+            <summary>
+            单个字段更新
+            </summary>
+            <param name="id">主键</param>
+            <param name="field">更新的字段</param>
+            <param name="value">更新的值</param>
+            <returns></returns>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Profiles.AutoMapperProfile">
+            <summary>
+            AutoMapper映射
+            </summary>
+        </member>
+        <member name="T:quewaner.Blog.ApplicationCore.Services.ArticleService">
+            <summary>
+            文章服务
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.AddArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.AddArticleDto)">
+            <summary>
+            添加文章
+            </summary>
+            <param name="addArticleDto">添加文章对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.DeleteArticleAsync(System.String)">
+            <summary>
+            删除文章
+            </summary>
+            <param name="id">博客ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.UpdateArticleAsync(quewaner.Blog.DataTransferObject.ArticleDto.UpdateArticleDto)">
+            <summary>
+            更改文章信息
+            </summary>
+            <param name="updateArticleDto">更改文章模型</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.GetArticlesAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取文章分页数据
+            </summary>
+            <param name="pageParameters">分页查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Services.ArticleService.GetArticleByIdAsync(System.String)">
+            <summary>
+            根据ID获取文章
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

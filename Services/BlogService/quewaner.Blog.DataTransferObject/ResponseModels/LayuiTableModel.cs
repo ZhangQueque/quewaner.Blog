@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace quewaner.Blog.DataTransferObject.ResponseModels
+﻿namespace quewaner.Blog.DataTransferObject.ResponseModels
 {
     /// <summary>
     /// Layui表格模型
@@ -10,7 +6,7 @@ namespace quewaner.Blog.DataTransferObject.ResponseModels
     public class LayuiTableModel<T>
     {
 
-        public LayuiTableModel(int code,string msg="",T data=default, int count=0) 
+        public LayuiTableModel(int code, string msg = "", T data = default, int count = 0)
         {
             Code = code;
             Msg = msg;

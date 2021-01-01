@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using quewaner.Blog.DataTransferObject;
 namespace quewaner.Blog.CMS.Data
 {
     public class ApplicationDbContext : IdentityDbContext

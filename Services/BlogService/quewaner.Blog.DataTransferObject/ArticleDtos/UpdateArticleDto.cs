@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace quewaner.Blog.DataTransferObject.ArticleDto
+﻿namespace quewaner.Blog.DataTransferObject.ArticleDto
 {
     /// <summary>
     /// 更改文章模型

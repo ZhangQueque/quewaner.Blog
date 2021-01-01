@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace quewaner.Blog.DataTransferObject.Pages
+﻿namespace quewaner.Blog.DataTransferObject.Pages
 {
     public class PageParameters
     {
