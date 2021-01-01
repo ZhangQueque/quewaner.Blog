@@ -9,18 +9,32 @@
             文章分类
             </summary>
         </member>
-        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.AddArticleAsync(quewaner.Blog.DataTransferObject.ArticleTypeDtos.AddArticleTypeDto)">
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.AddArticleTypeAsync(quewaner.Blog.DataTransferObject.ArticleTypeDtos.AddArticleTypeDto)">
             <summary>
             添加文章分类
             </summary>
             <param name="addArticleTypeDto">添加对象</param>
             <returns></returns>
         </member>
-        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.DeleteArticleAsync(System.String)">
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.DeleteArticleTypeAsync(System.String)">
             <summary>
             删除文章分类
             </summary>
             <param name="id">博客主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.UpdateArticleTypeAsync(quewaner.Blog.DataTransferObject.ArticleTypeDtos.UpdateArticleTypeDto)">
+            <summary>
+            更改文章类别
+            </summary>
+            <param name="updateArticle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.GetArticleTypeAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
+            <summary>
+            获取文章类别
+            </summary>
+            <param name="pageParameters">查询参数</param>
             <returns></returns>
         </member>
         <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.GetArticleTypeLayuiTableAsync(quewaner.Blog.DataTransferObject.Pages.PageParameters)">
@@ -28,6 +42,13 @@
             获取Layui表格数据
             </summary>
             <param name="pageParameters">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:quewaner.Blog.Api.Controllers.ArticleTypeController.GetArticleTypeByIdAsync(System.String)">
+            <summary>
+            根据id获取文章类别
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:quewaner.Blog.Api.Controllers.BlogController">

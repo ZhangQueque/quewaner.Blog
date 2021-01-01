@@ -70,15 +70,16 @@
             </summary>
             <param name="articleType"></param>
         </member>
-        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Update(System.String,System.String,System.String,System.String,quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType)">
+        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.Article.Update(System.String,System.String,System.String,System.String,System.Int32,quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType)">
             <summary>
             更改
             </summary>
-            <param name="title"></param>
-            <param name="summaryInfo"></param>
-            <param name="icon"></param>
-            <param name="content"></param>
-            <param name="articleType"></param>
+            <param name="title">标题</param>
+            <param name="summaryInfo">简介</param>
+            <param name="icon">头图</param>
+            <param name="content">内容</param>
+            <param name="articleType">文章类别</param>
+            <param name="status">文章状态</param>
         </member>
         <member name="T:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType">
             <summary>
@@ -99,6 +100,30 @@
             <summary>
             摘要信息
             </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.CreatTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="M:quewaner.Blog.ApplicationCore.Entities.ArticleAggregate.ArticleType.Update(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            更改
+            </summary>
+            <param name="name">名称</param>
+            <param name="icon">图标</param>
+            <param name="summaryInfo">简介</param>
+            <param name="status">状态</param>
         </member>
         <member name="P:quewaner.Blog.ApplicationCore.Entities.BaseEntity`1.Id">
             <summary>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - 缺碗儿</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .container {
+            width: 98%;
+            max-width: 98%;
+        }
+      
+    </style>
+     @RenderSection("Styles", required: false)
+
+</head>
+<body>
+
+    <div class="container">
+
+        @RenderBody()
+
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            版权声明
+            &copy;  <a target="_blank" style="color:#6c757d!important" href="http://www.quewaner.com">2020 - 缺婉儿</a>   <a style="color:#6c757d!important" href="http://beian.miit.gov.cn">晋ICP备2020014208号-2</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

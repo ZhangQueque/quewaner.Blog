@@ -35,7 +35,12 @@ namespace quewaner.Blog.Api
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c => //配置Swagger文章注释
+
+            //配置跨域
+            services.AddCors(options=>options.AddPolicy("cors", set=>set.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()));
+
+            //配置Swagger文章注释
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "quewaner.Blog.Api", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "quewaner.Blog.Api.xml"));
@@ -46,13 +51,15 @@ namespace quewaner.Blog.Api
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //注配置文件内容 
+            //注配置文件内容            
             services.Configure<MongoDatabaseSettings>(Configuration.GetSection("MongoDatabaseSettings"));
+            //这地方只是演示怎么从服务中给 接口注册 相对应的配置文件信息
             services.AddSingleton<IMongoDatabaseSettings>(sp => sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
 
             services.AddScoped(typeof(IAsyncRepository<>),typeof(MongoDBRepository<>));
 
             services.AddScoped<IArticleService, ArticleService>();
+
          }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +76,7 @@ namespace quewaner.Blog.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "quewaner.Blog.Api v1"); });
             }
-
+            app.UseCors("cors");
             app.UseRouting();
 
             app.UseAuthorization();

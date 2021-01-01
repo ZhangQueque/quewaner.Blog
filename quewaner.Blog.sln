@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.ApplicationCore", "quewaner.Blog.ApplicationCore\quewaner.Blog.ApplicationCore.csproj", "{4B66CA7B-F962-42BD-9F8A-09152A1DC2DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quewaner.Blog.DataTransferObject", "quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj", "{8A917DD5-9884-4FD4-93E3-7C12E3500E53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quewaner.Blog.DataTransferObject", "quewaner.Blog.DataTransferObject\quewaner.Blog.DataTransferObject.csproj", "{8A917DD5-9884-4FD4-93E3-7C12E3500E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quewaner.Blog.CMS", "quewaner.Blog.CMS\quewaner.Blog.CMS.csproj", "{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8A917DD5-9884-4FD4-93E3-7C12E3500E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A917DD5-9884-4FD4-93E3-7C12E3500E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A917DD5-9884-4FD4-93E3-7C12E3500E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65107C0-D767-4EB6-AAEB-A6259C5F71AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

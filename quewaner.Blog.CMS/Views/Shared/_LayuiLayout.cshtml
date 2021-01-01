@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - 缺碗儿</title>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/lib/layui-v2.5.5/css/layui.css" media="all">
+    <style>
+        .layui-container {
+            width: 98%;
+        }
+    </style>
+    @RenderSection("Styles", false)
+
+</head>
+
+<body>
+
+
+    <div class="layui-container  ">
+        @RenderBody()
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            版权声明
+            &copy;  <a target="_blank" style="color:#6c757d!important" href="http://www.quewaner.com">2020 - 缺婉儿</a>   <a style="color:#6c757d!important" href="http://beian.miit.gov.cn">晋ICP备2020014208号-2</a>
+        </div>
+    </div>
+
+
+    <script src="~/lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="~/lib/layer/layer.js"></script>
+    <script src="/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+ 
+    @RenderSection("Scripts", false)
+</body>
+</html>
