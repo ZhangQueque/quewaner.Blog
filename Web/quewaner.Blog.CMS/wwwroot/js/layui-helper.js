@@ -176,7 +176,7 @@ submit	监听表单提交事件
      * @param {any} successFunction 成功回调
      * @param {any} errorFunction   失败回调
      */
-    AjaxPostAsync: function (url, data, successFunction, errorFunction) {
+    ajaxPostAsync: function (url, data, successFunction, errorFunction) {
         layer.load(); //loading
         $.ajax({
             url: url, // 发送的路径
@@ -194,7 +194,7 @@ submit	监听表单提交事件
      * @param {any} successFunction   成功回调
      * @param {any} errorFunction     失败回调
      */
-    AjaxGetAsync: function (url, successFunction, errorFunction) {
+    ajaxGetAsync: function (url, successFunction, errorFunction) {
         layer.load(); //loading
         $.ajax({
             url: url, // 发送的路径

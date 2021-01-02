@@ -40,6 +40,8 @@ namespace quewaner.Blog.Api.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<ResponseResult<ShowArticleDto>>> AddArticleAsync([FromBody] AddArticleDto addArticleDto)
         {
+            var a = DateTime.Now;
+
             try
             {
                 var addArticle = await _articleService.AddArticleAsync(addArticleDto);

@@ -65,8 +65,11 @@
 @section Scripts{
     <script src="~/js/layui-helper.js" asp-append-version="true"></script>
     <script>
-        
-        layuiHelper.tableRender("#blogTable","#blogTableToolBar", "@_staticConfigs.GenerateGetLayuiTableBlogApiUrl()", [
+
+
+
+        $(function () {
+             layuiHelper.tableRender("#blogTable","#blogTableToolBar", "@_staticConfigs.GenerateGetLayuiTableBlogApiUrl()", [
             { type: "checkbox", width: 50 },
             { field: 'id', width: 160, title: 'ID', sort: true },
             { field: 'code', width: 20, title: '自定义主键编码', sort: true },
@@ -82,13 +85,28 @@
             { title: '操作', toolbar: '#blogTableBar', align: "center" }
         ], 1, 10);
 
+  
+            layuiHelper.tableToolEvent('blogTableFilter', 'toolbar', 'add', function (data) {
 
-        layuiHelper.tableToolEvent('blogTableFilter', 'toolbar', 'add', function (data) {
-            console.log(data);
+               layui.use([ 'miniTab'], function () {
+                    var miniTab = layui.miniTab;
+                    // 打开新的窗口
+                    miniTab.openNewTabByIframe({
+                        href: "blog/add",
+                        title: "添加博客",
+                    });
+                });
+                  
+                
+            });
+
+
+            layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'edit', function (data) {
+                console.log(data);
+            });
+
         });
 
-        layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'edit', function (data) {
-            console.log(data);
-        });
+
     </script>
 }

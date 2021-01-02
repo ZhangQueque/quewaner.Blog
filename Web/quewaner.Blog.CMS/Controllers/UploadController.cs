@@ -21,11 +21,11 @@ namespace quewaner.Blog.CMS.Controllers
         /// <summary>
         /// Layui图片上传接口
         /// </summary>
+        /// <param name="imgTemplate">图片模板（COS开启了禁止原图访问需要模板）</param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult LayuiUploadFile()
+        public async Task<IActionResult> LayuiUploadFile(string imgTemplate= "add_article_icon")
         {
-
             #region OSS上传  下面有本地上传案例
             IFormFile formFiles = HttpContext.Request.Form.Files?.FirstOrDefault();
             try
@@ -33,12 +33,11 @@ namespace quewaner.Blog.CMS.Controllers
                 string fileName = $"/Blog/{DateTimeOffset.Now.ToUnixTimeSeconds()}_{formFiles?.FileName}";
                 using (MemoryStream memory = new MemoryStream())
                 {
-                    formFiles.CopyToAsync(memory);
+                    await formFiles.CopyToAsync(memory);
                     var putObjectResult = TencentOSSHelper.UploadFile(fileName, memory.ToArray());
                     if (putObjectResult?.IsSuccessful() ?? false)
                     {
-                        return Ok(new { code = 0, msg = "成功", data = new { src = "https://common-1304279371.file.myqcloud.com"+fileName + "/blog" } }); //Layui特定返回格式
-
+                        return Ok(new { code = 0, msg = "成功", data = new { src = "https://common-1304279371.file.myqcloud.com"+fileName + "/" + imgTemplate } }); //Layui特定返回格式
                     }
                 }
                 return Ok(new { code = 1, msg = "失败" });
@@ -59,7 +58,7 @@ namespace quewaner.Blog.CMS.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult EditorUploadFile()
+        public async Task<IActionResult> EditorUploadFile()
         {
             IFormFile formFiles = HttpContext.Request.Form.Files?.FirstOrDefault();
 
@@ -71,7 +70,7 @@ namespace quewaner.Blog.CMS.Controllers
             //    string savePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", "blogImages", fileName);
             //    using (FileStream fs = System.IO.File.Create(savePath))
             //    {
-            //        formFiles.CopyToAsync(fs);
+            //       await formFiles.CopyToAsync(fs);
             //    }
 
             //    return Ok(new { success = 1, message = "成功", url = Path.Combine("/blogImages", fileName) });  //编辑器固定的返回格式
@@ -91,7 +90,8 @@ namespace quewaner.Blog.CMS.Controllers
                 string fileName = $"/Blog/{DateTimeOffset.Now.ToUnixTimeSeconds()}_{formFiles?.FileName}";
                 using (MemoryStream memory = new MemoryStream())
                 {
-                    formFiles.CopyToAsync(memory);
+                    await formFiles.CopyToAsync(memory);
+                  
                     var putObjectResult = TencentOSSHelper.UploadFile(fileName, memory.ToArray());
                     if (putObjectResult?.IsSuccessful() ?? false)
                     {

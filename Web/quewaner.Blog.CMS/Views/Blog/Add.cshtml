@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "添加博客";
     Layout = "~/Views/Shared/_LayuiLayout.cshtml";
-    var articleTypeList =ViewData["ArticleTypeList"] as List<ShowArticleTypeDto>;
+    var articleTypeList = ViewData["ArticleTypeList"] as List<ShowArticleTypeDto>;
 }
 
 @section Styles{
@@ -13,79 +13,79 @@
             height: 137.5px;
             max-width: 100%;
             border: 3px solid;
-
         }
+
         .layui-upload-drag {
             margin-bottom: 1px;
             height: 143px;
             padding: 18px;
         }
     </style>
-   
+
 }
 
 <div class="layui-row" style="">
     <div class="layui-col-md8">
         <fieldset class="table-search-fieldset">
             <legend>文章信息</legend>
-            <form class="layui-form layui-form-pane"  >
+            <form class="layui-form layui-form-pane">
                 <div class="layui-row">
                     <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" autocomplete="off" class="layui-input">
+                            <input type="text" name="title" autocomplete="off"  class="layui-input">
                         </div>
                     </div>
 
 
-                    </div>
-                    <div class="layui-row">
-                        <div class="layui-form-item">
+                </div>
+                <div class="layui-row">
+                    <div class="layui-form-item">
 
-                            <label class="layui-form-label">摘要</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="summaryInfo" autocomplete="off" class="layui-input">
-                            </div>
-
+                        <label class="layui-form-label">摘要</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="summaryInfo" autocomplete="off" class="layui-input">
                         </div>
+
                     </div>
-                  
-                    <div class="layui-row">
-                        <div class="layui-col-md6">
-                            <label class="layui-form-label">分类</label>
-                            <div class="layui-input-block">
-                                <select name="articleTypeId">
-                                    <option value="">请选择</option>
-                                    @if (articleTypeList is not null and { Count: > 0 })
+                </div>
+
+                <div class="layui-row">
+                    <div class="layui-col-md6">
+                        <label class="layui-form-label">分类</label>
+                        <div class="layui-input-block">
+                            <select name="articleTypeId">
+                                <option value="">请选择</option>
+                                @if (articleTypeList is not null and { Count: > 0 })
+                                {
+                                    foreach (var item in articleTypeList)
                                     {
-                                        foreach (var item in articleTypeList)
-                                        {
-                                            <option value="@item.Id">@item.Name</option>
-                                        }
+                                        <option value="@item.Id">@item.Name</option>
                                     }
-                                </select>
-                            </div>
+                                }
+                            </select>
                         </div>
-                        <div class="layui-inline layui-col-md6" >
-                            <button  class="layui-btn layui-btn-primary" lay-submit lay-filter="add-article" style="margin-left:10px"><i class="layui-icon layui-icon-add-circle-fine"></i> 发布</button>
-                             <button  class="layui-btn layui-btn-primary" lay-submit lay-filter="save-article"><i class="layui-icon layui-icon-star"></i> 存为草稿箱</button>
-                        </div>
-                       
+                    </div>
+                    <div class="layui-inline layui-col-md6">
+                        <button class="layui-btn layui-btn-primary" lay-submit lay-filter="add-article" style="margin-left:10px"><i class="layui-icon layui-icon-add-circle-fine"></i> 发布</button>
+                        <button class="layui-btn layui-btn-primary" lay-submit lay-filter="save-article"><i class="layui-icon layui-icon-star"></i> 存为草稿箱</button>
                     </div>
 
-</form>
+                </div>
+
+            </form>
 
         </fieldset>
     </div>
-    <div class="layui-col-md4" >
-        <fieldset class="table-search-fieldset"  >
+    <div class="layui-col-md4">
+        <fieldset class="table-search-fieldset">
             <legend>上传封面</legend>
-            <div class="layui-upload-drag layui-col-md6" id="add_article_icon" >
+            <div class="layui-upload-drag layui-col-md6" id="add_article_icon">
                 <i class="layui-icon"></i>
                 <p>点击上传，或将文件拖拽到此处</p>
             </div>
             <div class="layui-col-md6" id="add_article_icon_img">
-                <img src="https://quewaner-1304279371.file.myqcloud.com/%E7%BC%BA%E5%A9%89%E5%84%BF/quewaner.png/add.article.icon?a=@DateTimeOffset.UtcNow.ToUnixTimeSeconds()" id="icon" alt="上传成功后渲染" asp-append-version="true"  >
+                <img src="https://quewaner-1304279371.file.myqcloud.com/%E7%BC%BA%E5%A9%89%E5%84%BF/quewaner.png/add_article_icon?a=@DateTimeOffset.UtcNow.ToUnixTimeSeconds()" id="icon" alt="上传成功后渲染" asp-append-version="true">
             </div>
         </fieldset>
 
@@ -103,13 +103,14 @@
     <script src="~/editormd/js/editormd.js"></script>
     <script src="~/editormd/js/editormdUploadImg.js" asp-append-version="true"></script>
     <script src="~/js/layui-helper.js" asp-append-version="true"></script>
+    <script src="~/js/layer-helper.js" asp-append-version="true"></script>
     <script type="text/javascript">
         var testEditor;
         $(function () {
             //初始化富文本框
             testEditor = editormd("add-article-editormd", {
                 width: "100%",
-                height: 888,
+                height: 620,
                 path: '/editormd/lib/',
                 //theme: "dark", //头部工具栏主题
                 //previewTheme: "dark", //展示主题
@@ -164,9 +165,7 @@
             layuiHelper.formRender();
 
 
-        });
-
-        layuiHelper.uploadFile('#add_article_icon', '/Upload/LayuiUploadFile', '#icon');
+                    layuiHelper.uploadFile('#add_article_icon', '/Upload/LayuiUploadFile', '#icon');
 
         //发布
         layuiHelper.formEvent("add-article", "submit", function (data) {
@@ -176,29 +175,41 @@
             postData.content = testEditor.getMarkdown();
             postData.status = 1;
             console.log(postData)
-            layuiHelper.AjaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
-                layerHelper.CloseAllLoading();
+            layerHelper.confirm(null, '确定要发布文章吗？',
+                function () {
+                      layuiHelper.ajaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
+                layerHelper.closeAllLoading();
                 console.log(res)
             }, function (res) { });
+                }
+            )
+
         });
 
 
 
         //存为草稿
         layuiHelper.formEvent("save-article", "submit", function (data) {
-          
+
             var postData = data.field;
             postData.icon = $('#icon').attr('src');
             postData.content = testEditor.getMarkdown();
             postData.status = 0;
-            layuiHelper.AjaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
-                layerHelper.CloseAllLoading();
-                if (res.code==1) {
 
-                }
+            layerHelper.confirm(null, '确定要保存到草稿箱吗？',
+                function () {
+                      layuiHelper.ajaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
+                layerHelper.closeAllLoading();
                 console.log(res)
-            });
+            }, function (res) { });
+                }
+            )
         });
+
+
+        });
+
+
     </script>
 
 }
