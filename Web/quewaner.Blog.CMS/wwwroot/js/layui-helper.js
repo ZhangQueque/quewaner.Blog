@@ -1,4 +1,10 @@
-﻿ 
+﻿
+
+
+
+
+
+
 var layuiHelper = {
 
     /**
@@ -31,6 +37,8 @@ var layuiHelper = {
             });
         });
     },
+
+
     /**
      * 工具栏事件
      * @param {string} tableFilter 表格lay-filter 名称
@@ -38,7 +46,7 @@ var layuiHelper = {
      * @param {string} eventName   按钮lay-event 名称
      * @param {function} event     点击事件
      */
-    tableClickEvent: function (tableFilter, eventType, eventName, event) {
+    tableToolEvent: function (tableFilter, eventType, eventName, event) {
         layui.use(['table'], function () {
             var table = layui.table;
             //监听事件
@@ -56,6 +64,8 @@ var layuiHelper = {
             });
         });
     },
+
+
     /**
      * 文件上传-拖拽上传
      * @param {string} elem  要绑定的元素ID ID选择器，需要带#号)
@@ -103,9 +113,8 @@ var layuiHelper = {
                 }
                 , done: function (res, index, upload) {
                     layer.closeAll('loading'); //关闭loading
-                    layer.msg('上传成功');
-                    $(img).removeClass('layui-hide').find('img').attr('src', res.data.src);
-                    console.log(res)
+                   
+                    $(img).attr('src', res.data.src);
                 }
                 , error: function (index, upload) {
                     layer.closeAll('loading'); //关闭loading
@@ -117,9 +126,11 @@ var layuiHelper = {
 
         });
     },
-   /**
-    表单渲染
-    * */
+
+
+    /**
+     * 表单渲染  
+     */
     formRender: function () {
         layui.use('form', function () {
             var form = layui.form;
@@ -127,10 +138,71 @@ var layuiHelper = {
             form.render(); //更新全部  ，为了防止动态插入的数据丢失
         });
 
-    }
+    },
 
 
+    /**
+     * 表单事件
+     * @param {any} eventFilter 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
+     * @param {any} eventType   select	监听select下拉选择事件
+checkbox	监听checkbox复选框勾选事件
+switch	监听checkbox复选框开关事件
+radio	监听radio单选框事件
+submit	监听表单提交事件
+     * @param {any} event 获取数据后的事件
+     */
+    formEvent: function (eventFilter, eventType, event) {
+        layui.use('form', function () {
+            var form = layui.form;
 
+            form.on(eventType + '(' + eventFilter + ')', function (data) {
+
+                //console.log(data.elem); //被执行事件的元素DOM对象，一般为button对象
+                // console.log(data.form); //被执行提交的form对象，一般在存在form标签时才会返回
+                //console.log(data.field); //当前容器的全部表单字段，名值对形式：{name: value}
+
+                //你的逻辑
+                (checkFunction(event))(data);
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+        });
+    },
+
+
+    /**
+     * AJAX Post请求
+     * @param {any} url     请求地址
+     * @param {any} data    请求数据
+     * @param {any} successFunction 成功回调
+     * @param {any} errorFunction   失败回调
+     */
+    AjaxPostAsync: function (url, data, successFunction, errorFunction) {
+        layer.load(); //loading
+        $.ajax({
+            url: url, // 发送的路径
+            type: "post", // 发送方式
+            data: JSON.stringify(data),   // 发送的数据，注意，这里一定要序列化，因为已经声明了。
+            contentType: 'application/json',  // 声明发送数据格式
+            success: checkFunction(successFunction),
+            error: checkFunction(errorFunction)
+        })
+    },
+
+    /**
+     * AJAX Get请求
+     * @param {any} url 请求地址
+     * @param {any} successFunction   成功回调
+     * @param {any} errorFunction     失败回调
+     */
+    AjaxGetAsync: function (url, successFunction, errorFunction) {
+        layer.load(); //loading
+        $.ajax({
+            url: url, // 发送的路径
+            type: "get", // 发送方式
+            success: checkFunction(successFunction),
+            error: checkFunction(errorFunction)
+        })
+    },
 
 }
 

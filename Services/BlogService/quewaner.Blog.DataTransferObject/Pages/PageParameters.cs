@@ -35,5 +35,9 @@
         /// </summary>
         public string ArticleTypeId { get; set; } = "";
 
+        /// <summary>
+        /// 当前状态1启用 ， 0 禁用  3为全部
+        /// </summary>
+        public int Status { get; set; } = 3;
     }
 }

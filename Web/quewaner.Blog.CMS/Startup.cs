@@ -55,6 +55,9 @@ namespace quewaner.Blog.CMS
             //AddRazorRuntimeCompilation() 启动保存时Razor视图自动更新
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+            //注册Httpclient  工厂创建时使用
+            services.AddHttpClient("",options=>options.BaseAddress = new Uri(Configuration["StaticConfigs:BlogApiUrl"]));
+
             //注册基本配置信息
             services.Configure<StaticConfig>(Configuration.GetSection("StaticConfigs"));
             services.AddSingleton<IStaticConfig>(sp=>sp.GetService<IOptions<StaticConfig>>().Value);

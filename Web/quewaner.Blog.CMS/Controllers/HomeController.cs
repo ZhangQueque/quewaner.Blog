@@ -46,7 +46,7 @@ namespace quewaner.Blog.CMS.Controllers
             var data = Request;
             var a = Request.Form.Files;
            
-                return Ok(new { code = 0, msg = "成功", data= new {src = "http://5b0988e595225.cdn.sohucs.com/images/20200420/b0ab35ee97b54d6b8963e9c989c57388.png" }});
+             return Ok(new { code = 0, msg = "成功", data= new {src = "http://5b0988e595225.cdn.sohucs.com/images/20200420/b0ab35ee97b54d6b8963e9c989c57388.png" }});
            
            
         }

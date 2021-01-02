@@ -20,6 +20,8 @@
         /// </summary>
         /// <returns></returns>
         string GenerateDeleteBlogApiUrl();
+        string GenerateGetArticleTypeApiUrl();
+
         /// <summary>
         /// 形成更改博客的APIURL
         /// </summary>

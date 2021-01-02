@@ -25,10 +25,10 @@ namespace quewaner.Blog.DataTransferObject.Pages
 
         }
 
-        public IReadOnlyList<T> Items { get; }
-        public int PageIndex { get; }
-        public int PageSize { get; }
-        public int Count { get; }
+        public IReadOnlyList<T> Items { get; set;}
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public int Count { get; set; }
         public int PageTotal { get; set; }
 
     }

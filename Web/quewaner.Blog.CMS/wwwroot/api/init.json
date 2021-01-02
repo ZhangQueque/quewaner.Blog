@@ -5,7 +5,7 @@
   },
   "logoInfo": {
     "title": "缺碗儿 ",
-    "image": "https://quewaner-1304279371.file.myqcloud.com/%E7%BC%BA%E5%A9%89%E5%84%BF/quewaner_Icon.png_logo",
+    "image": "https://quewaner-1304279371.file.myqcloud.com/%E7%BC%BA%E5%A9%89%E5%84%BF/quewaner_Icon.png/logo",
     "href": ""
   },
   "menuInfo": [
@@ -26,27 +26,27 @@
           ]
         },
         {
-          "title": "技术博客",
+          "title": " 技术博客",
           "href": "",
-          "icon": "fa fa-home",
+          "icon": "fa layui-icon layui-icon-read",
           "target": "_self",
           "child": [
             {
               "title": "分类管理",
               "href": "home/index",
-              "icon": "fa fa-tachometer",
+              "icon": "layui-icon  layui-icon-templeate-1",
               "target": "_self"
             },
             {
               "title": "添加博客",
               "href": "Blog/Add",
-              "icon": "fa fa-tachometer",
+              "icon": "layui-icon  layui-icon-add-1",
               "target": "_self"
             },
             {
               "title": "博客管理",
               "href": "Blog/index",
-              "icon": "fa fa-tachometer",
+              "icon": "layui-icon  layui-icon-tabs",
               "target": "_self"
             }
           ]

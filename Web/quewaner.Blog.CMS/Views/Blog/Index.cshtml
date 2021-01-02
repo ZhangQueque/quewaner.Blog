@@ -3,7 +3,6 @@
     ViewData["Title"] = "博客管理";
     Layout = "~/Views/Shared/_LayuiLayout.cshtml";
 }
-@inject IStaticConfig _staticConfigs
 
 
 
@@ -84,11 +83,11 @@
         ], 1, 10);
 
 
-        layuiHelper.tableClickEvent('blogTableFilter', 'toolbar', 'add', function (data) {
+        layuiHelper.tableToolEvent('blogTableFilter', 'toolbar', 'add', function (data) {
             console.log(data);
         });
 
-        layuiHelper.tableClickEvent('blogTableFilter', 'toolbar', 'add', function (data) {
+        layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'edit', function (data) {
             console.log(data);
         });
     </script>

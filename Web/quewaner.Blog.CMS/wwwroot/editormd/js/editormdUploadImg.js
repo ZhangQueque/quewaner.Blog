@@ -41,6 +41,7 @@ function uploadImg(file, Editor) {
     var formData = new FormData();
     var fileName = new Date().getTime() + "." + file.name.split(".").pop();
     formData.append('editormd-image-file', file, fileName);
+    layer.load();
     $.ajax({
         url: Editor.settings.imageUploadURL,
         type: 'post',
@@ -49,12 +50,18 @@ function uploadImg(file, Editor) {
         contentType: false,
         dataType: 'json',
         success: function (msg) {
+            layer.closeAll('loading');
             var success = msg['success'];
             if (success == 1) {
                 var url = msg["url"];
                 if (/\.(png|jpg|jpeg|gif|bmp|ico)$/.test(url)) {
+                 Editor.insertValue("![图片alt](" + msg["url"] + " ''图片title'')");
+                }
+                else if (/[\/blog]$/.test(url))
+                {
                     Editor.insertValue("![图片alt](" + msg["url"] + " ''图片title'')");
-                } else {
+                }
+                else {
                     Editor.insertValue("[下载附件](" + msg["url"] + ")");
                 }
             } else {

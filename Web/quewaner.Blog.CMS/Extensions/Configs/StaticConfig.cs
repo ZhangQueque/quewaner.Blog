@@ -69,5 +69,16 @@ namespace quewaner.Blog.CMS.Extensions.Configs
         {
             return string.Format("{0}/api/Blog/{1}", BlogApiUrl,id);
         }
+
+
+        /// <summary>
+        /// 形成文章分类APIURL
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateGetArticleTypeApiUrl()
+        {
+            return string.Format("{0}/api/ArticleType/get", BlogApiUrl);
+        }
+
     }
 }

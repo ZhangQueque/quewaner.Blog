@@ -1,4 +1,4 @@
-﻿ using quewaner.Blog.ApplicationCore.Exceptions;
+﻿using quewaner.Blog.ApplicationCore.Exceptions;
 using quewaner.Blog.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace quewaner.Blog.ApplicationCore.Services
         private readonly IAsyncRepository<ArticleType> _articleTypeRepository;
         private readonly IMapper _mapper;
 
-        public ArticleService(ILogger<ArticleService> logger, IAsyncRepository<Article> articleRepository , IAsyncRepository<ArticleType> articleTypeRepository,IMapper mapper )
+        public ArticleService(ILogger<ArticleService> logger, IAsyncRepository<Article> articleRepository, IAsyncRepository<ArticleType> articleTypeRepository, IMapper mapper)
         {
             _logger = logger;
             _articleRepository = articleRepository;
@@ -63,8 +63,8 @@ namespace quewaner.Blog.ApplicationCore.Services
         /// <returns></returns>
         public async Task<ShowArticleDto> DeleteArticleAsync(string id)
         {
-            var article= await _articleRepository.GetByIdAsync(id);
-            if (article!=null)
+            var article = await _articleRepository.GetByIdAsync(id);
+            if (article != null)
 
             {  //返回展示模型
                 var showArticle = _mapper.Map<ShowArticleDto>(article);
@@ -72,7 +72,7 @@ namespace quewaner.Blog.ApplicationCore.Services
                 {
                     return showArticle;
                 }
-            }    
+            }
             _logger.LogError($"文章删除失败。主键:{id},失败数据:{JsonConvert.SerializeObject(article)}");
             return null;
         }
@@ -87,13 +87,13 @@ namespace quewaner.Blog.ApplicationCore.Services
             ArticleType articleType = await _articleTypeRepository.GetByIdAsync(updateArticleDto.ArticleTypeId);
             Guard.Against.NullArticleType(updateArticleDto.ArticleTypeId, articleType);
 
-            Article article =await _articleRepository.GetByIdAsync(updateArticleDto.Id) ;
+            Article article = await _articleRepository.GetByIdAsync(updateArticleDto.Id);
             Guard.Against.NullArticle(updateArticleDto.Id, article);
 
-            article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content,updateArticleDto.Status, articleType);
-           
+            article.Update(updateArticleDto.Title, updateArticleDto.SummaryInfo, updateArticleDto.Icon, updateArticleDto.Content, updateArticleDto.Status, articleType);
+
             if (await _articleRepository.ReplaceAsync(article))
-            {  
+            {
                 //返回展示模型
                 var showArticle = _mapper.Map<ShowArticleDto>(article);
                 return showArticle;
@@ -115,38 +115,44 @@ namespace quewaner.Blog.ApplicationCore.Services
 
             int count = 0;
             //在这里判断文章类型是否为空，而不是在lamada中判断，是因为mongodb会去根据这个ID查询，但是发现这个ID并不是一个有效的24位十六进制字符串  ，会报错
-            if (!string.IsNullOrEmpty(pageParameters.ArticleTypeId) )
+            if (!string.IsNullOrEmpty(pageParameters.ArticleTypeId))
             {
-                  list = await _articleRepository.GetAsync(
-                   m => string.IsNullOrEmpty(pageParameters.Keyword)
-                  || m.Title.Contains(pageParameters.Keyword)
-                  || m.SummaryInfo.Contains(pageParameters.Keyword)
-                  && m.ArticleType.Id == pageParameters.ArticleTypeId, pageParameters.Page, pageParameters.Limit, Builders<Article>.Sort.Descending(sort => sort.CreatTime));
-
-                  count = await _articleRepository.GetCountAsync(
-                   m => string.IsNullOrEmpty(pageParameters.Keyword)
-                   || m.Title.Contains(pageParameters.Keyword)
-                   || m.SummaryInfo.Contains(pageParameters.Keyword)
-                   && m.ArticleType.Id == pageParameters.ArticleTypeId
-                   );
-            }
-            else            {
                 list = await _articleRepository.GetAsync(
-                 m => string.IsNullOrEmpty(pageParameters.Keyword)
+                 m => (string.IsNullOrEmpty(pageParameters.Keyword)
                 || m.Title.Contains(pageParameters.Keyword)
-                || m.SummaryInfo.Contains(pageParameters.Keyword)
+                || m.SummaryInfo.Contains(pageParameters.Keyword))
+                && (m.ArticleType.Id == pageParameters.ArticleTypeId), pageParameters.Page, pageParameters.Limit, Builders<Article>.Sort.Descending(sort => sort.CreatTime));
+
+                count = await _articleRepository.GetCountAsync(
+                 m => (string.IsNullOrEmpty(pageParameters.Keyword)
+                || m.Title.Contains(pageParameters.Keyword)
+                || m.SummaryInfo.Contains(pageParameters.Keyword))
+                && (m.ArticleType.Id == pageParameters.ArticleTypeId)
+                 );
+            }
+            else
+            {
+                list = await _articleRepository.GetAsync(
+                 m => (string.IsNullOrEmpty(pageParameters.Keyword)
+                || m.Title.Contains(pageParameters.Keyword)
+                || m.SummaryInfo.Contains(pageParameters.Keyword))
+
               , pageParameters.Page, pageParameters.Limit, Builders<Article>.Sort.Descending(sort => sort.CreatTime));
 
                 count = await _articleRepository.GetCountAsync(
-                 m => string.IsNullOrEmpty(pageParameters.Keyword)
-                 || m.Title.Contains(pageParameters.Keyword)
-                 || m.SummaryInfo.Contains(pageParameters.Keyword)            
+                 m => (string.IsNullOrEmpty(pageParameters.Keyword)
+                || m.Title.Contains(pageParameters.Keyword)
+                || m.SummaryInfo.Contains(pageParameters.Keyword))
+
                  );
             }
 
             var showArticles = _mapper.Map<IReadOnlyList<ShowArticleDto>>(list);
-
-            return new PageList<ShowArticleDto>(showArticles, pageParameters.Page,pageParameters.Limit,count);
+            if (pageParameters.Status!=3)
+            {
+                showArticles = showArticles.Where(m => m.Status == pageParameters.Status).ToList();
+            }
+            return new PageList<ShowArticleDto>(showArticles, pageParameters.Page, pageParameters.Limit, count);
         }
 
         /// <summary>

@@ -34,6 +34,11 @@
             类别ID
             </summary>
         </member>
+        <member name="P:quewaner.Blog.DataTransferObject.ArticleDto.AddArticleDto.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用
+            </summary>
+        </member>
         <member name="T:quewaner.Blog.DataTransferObject.ArticleDto.UpdateArticleDto">
             <summary>
             更改文章模型
@@ -248,6 +253,11 @@
         <member name="P:quewaner.Blog.DataTransferObject.Pages.PageParameters.ArticleTypeId">
             <summary>
             文章类别
+            </summary>
+        </member>
+        <member name="P:quewaner.Blog.DataTransferObject.Pages.PageParameters.Status">
+            <summary>
+            当前状态1启用 ， 0 禁用  3为全部
             </summary>
         </member>
         <member name="T:quewaner.Blog.DataTransferObject.ResponseModels.LayuiTableModel`1">
