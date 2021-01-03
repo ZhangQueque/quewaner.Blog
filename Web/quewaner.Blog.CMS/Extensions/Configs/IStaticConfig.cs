@@ -19,7 +19,12 @@
         /// 形成删除博客的APIURL
         /// </summary>
         /// <returns></returns>
-        string GenerateDeleteBlogApiUrl();
+        string GenerateDeleteBlogApiUrl( );
+
+        /// <summary>
+        /// 形成文章分类APIURL
+        /// </summary>
+        /// <returns></returns>
         string GenerateGetArticleTypeApiUrl();
 
         /// <summary>

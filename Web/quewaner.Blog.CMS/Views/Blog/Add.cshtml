@@ -33,7 +33,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" autocomplete="off"  class="layui-input">
+                            <input type="text" name="title" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -169,18 +169,21 @@
 
         //发布
         layuiHelper.formEvent("add-article", "submit", function (data) {
-            console.log(data.field);
-            var postData = data.field;
+             var postData = data.field;
             postData.icon = $('#icon').attr('src');
             postData.content = testEditor.getMarkdown();
             postData.status = 1;
-            console.log(postData)
+
             layerHelper.confirm(null, '确定要发布文章吗？',
-                function () {
-                      layuiHelper.ajaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
+                function (index) {
+                layuiHelper.ajaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
                 layerHelper.closeAllLoading();
-                console.log(res)
-            }, function (res) { });
+                    if (res.code == 1) {
+                        layerHelper.msg("发布成功!", function () { location.href = '/Blog/Index' }, 6);
+                    }
+                }, null);
+
+                layer.close(index);
                 }
             )
 
@@ -200,7 +203,9 @@
                 function () {
                       layuiHelper.ajaxPostAsync('@_staticConfigs.GenerateAddBlogApiUrl()', postData, function (res) {
                 layerHelper.closeAllLoading();
-                console.log(res)
+                          if (res.code == 1) {
+                              layerHelper.msg("保存成功!", function () { location.href = '/Blog/Index' }, 6);
+                          }
             }, function (res) { });
                 }
             )

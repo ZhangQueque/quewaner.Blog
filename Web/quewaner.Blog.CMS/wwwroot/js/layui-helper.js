@@ -59,7 +59,7 @@ var layuiHelper = {
                     data = obj.data;
                 }
                 if (obj.event == eventName) {
-                    (checkFunction(event))(data);
+                    (checkFunction(event))(data, obj);
                 }
             });
         });

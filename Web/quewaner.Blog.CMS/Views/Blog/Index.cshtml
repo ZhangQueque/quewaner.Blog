@@ -64,6 +64,7 @@
 
 @section Scripts{
     <script src="~/js/layui-helper.js" asp-append-version="true"></script>
+    <script src="~/js/layer-helper.js" asp-append-version="true"></script>
     <script>
 
 
@@ -85,7 +86,7 @@
             { title: '操作', toolbar: '#blogTableBar', align: "center" }
         ], 1, 10);
 
-  
+
             layuiHelper.tableToolEvent('blogTableFilter', 'toolbar', 'add', function (data) {
 
                layui.use([ 'miniTab'], function () {
@@ -96,13 +97,25 @@
                         title: "添加博客",
                     });
                 });
-                  
-                
+
+
             });
 
 
-            layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'edit', function (data) {
-                console.log(data);
+            layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'delete', function (data,obj) {
+
+            layerHelper.confirm(null, '确定要删除吗？',
+                function () {
+                layuiHelper.ajaxGetAsync('@_staticConfigs.GenerateDeleteBlogApiUrl()?id=' + data.id, function (res) {
+                    layerHelper.closeAllLoading();
+                    if (res.code == 1) {
+                        layerHelper.msg("删除成功!", function () {}, 1);
+                        obj.del();
+                    }
+                });
+                }
+            )
+
             });
 
         });
