@@ -108,7 +108,7 @@
         var testEditor;
         $(function () {
             //初始化富文本框
-            testEditor = editormd("add-article-editormd", {
+         testEditor = editormd("add-article-editormd", {
                 width: "100%",
                 height: 620,
                 path: '/editormd/lib/',
@@ -159,12 +159,8 @@
                 }
             });
 
-            $("#get-md-btn").bind('click', function () {
-                //lert(testEditor.getHTML());
-                alert();
-            });
-
-            layuiHelper.formRender();
+            //表单渲染，防止动态数据渲染不出来
+         layuiHelper.formRender();
 
          //上传文件
          layuiHelper.uploadFile('#add_article_icon', '/Upload/LayuiUploadFile', '#icon');

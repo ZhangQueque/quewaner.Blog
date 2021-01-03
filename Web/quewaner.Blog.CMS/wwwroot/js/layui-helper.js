@@ -43,8 +43,8 @@ var layuiHelper = {
      * 工具栏事件
      * @param {string} tableFilter 表格lay-filter 名称
      * @param {string} eventType   表头工具栏事件=toolbar/单元格工具栏事件=tool
-     * @param {string[]} eventName   按钮lay-event 名称
-     * @param {object []} eventObjs     点击事件
+     * @param {string[]} eventName   按钮lay-event 名称  数组
+     * @param {object []} eventObjs  事件对象数据  ] {event：funtion(){ 你要做的事情 }} ] ,事件要与上面的名称对应
      */
     tableToolEvent: function (tableFilter, eventType, eventNames, eventObjs) {
         layui.use(['table'], function () {
