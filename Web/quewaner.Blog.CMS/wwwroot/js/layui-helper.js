@@ -43,10 +43,10 @@ var layuiHelper = {
      * 工具栏事件
      * @param {string} tableFilter 表格lay-filter 名称
      * @param {string} eventType   表头工具栏事件=toolbar/单元格工具栏事件=tool
-     * @param {string} eventName   按钮lay-event 名称
-     * @param {function} event     点击事件
+     * @param {string[]} eventName   按钮lay-event 名称
+     * @param {object []} eventObjs     点击事件
      */
-    tableToolEvent: function (tableFilter, eventType, eventName, event) {
+    tableToolEvent: function (tableFilter, eventType, eventNames, eventObjs) {
         layui.use(['table'], function () {
             var table = layui.table;
             //监听事件
@@ -58,9 +58,12 @@ var layuiHelper = {
                 } else {  //单元格工具栏 选中数据
                     data = obj.data;
                 }
-                if (obj.event == eventName) {
-                    (checkFunction(event))(data, obj);
-                }
+             
+                $(eventNames).each(function (index,item) {
+                    if (item == obj.event) {
+                        (checkFunction(eventObjs[index].event))(data, obj);
+                    }
+                })         
             });
         });
     },

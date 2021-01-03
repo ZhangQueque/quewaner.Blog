@@ -167,7 +167,7 @@ namespace quewaner.Blog.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("one/{id}")]
         public async Task<ActionResult<ResponseResult<ShowArticleTypeDto>>> GetArticleTypeByIdAsync(string id)
         {
             try

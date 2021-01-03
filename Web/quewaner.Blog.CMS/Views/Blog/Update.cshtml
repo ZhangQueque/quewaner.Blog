@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewData["Title"] = "添加博客";
+    ViewData["Title"] = "编辑博客";
     Layout = "~/Views/Shared/_LayuiLayout.cshtml";
     var articleTypeList = ViewData["ArticleTypeList"] as List<ShowArticleTypeDto>;
 }
-
+@model ShowArticleDto
 @section Styles{
 
     <link href="~/editormd/css/editormd.css" rel="stylesheet" />
@@ -105,6 +105,8 @@
     <script src="~/js/layui-helper.js" asp-append-version="true"></script>
     <script src="~/js/layer-helper.js" asp-append-version="true"></script>
     <script type="text/javascript">
+        var md = {content : "@Model.Content.Replace("\"", "\\\"")" };
+        
         var testEditor;
         $(function () {
             //初始化富文本框
@@ -115,7 +117,7 @@
                 //theme: "dark", //头部工具栏主题
                 //previewTheme: "dark", //展示主题
                 editorTheme: "mdn-like", //编辑器主题
-                //markdown : md, //赋值md内容
+                markdown: md.content, //赋值md内容
                 codeFold: true,
                 //syncScrolling : false,
                 saveHTMLToTextarea: true, // 保存 HTML 到 Textarea
@@ -139,11 +141,11 @@
                 imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp", 'txt'],
                 imageUploadURL: "/Upload/EditorUploadFile",
                 toolbarAutoFixed: true, //固定导航栏
-                  //emoji: true,
+                //emoji: true,
                 //taskList: true,
                 //tex: true,  // 默认不解析
                 //flowChart: true,  // 默认不解析
-                //sequenceDiagram: true,  // 默认不解析  
+                //sequenceDiagram: true,  // 默认不解析
                 onload: function () {
                     //console.log('onload', this);
                     //this.fullscreen();

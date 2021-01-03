@@ -53,7 +53,7 @@
 <table class="layui-hide" id="blogTable" lay-filter="blogTableFilter"></table>
 
 <script type="text/html" id="blogTableBar">
-    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" id="edit" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
 </script>
 
@@ -102,24 +102,56 @@
             });
 
 
-            layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'delete', function (data,obj) {
-
-            layerHelper.confirm(null, '确定要删除吗？',
-                function () {
-                layuiHelper.ajaxGetAsync('@_staticConfigs.GenerateDeleteBlogApiUrl()?id=' + data.id, function (res) {
-                    layerHelper.closeAllLoading();
-                    if (res.code == 1) {
-                        layerHelper.msg("删除成功!", function () {}, 1);
-                        obj.del();
-                    }
-                });
-                }
-            )
-
-            });
 
         });
 
+                  @*//删除
+            layuiHelper.tableToolEvent('blogTableFilter', 'tool', 'delete', function (data,obj) {
+                 layerHelper.confirm('系统提示', '确定要删除吗？',
+                     function () {
+                     layuiHelper.ajaxGetAsync('@_staticConfigs.GenerateDeleteBlogApiUrl()?id=' + data.id, function (res) {
+                         layerHelper.closeAllLoading();
+                         if (res.code == 1) {
+                             layerHelper.msg("删除成功!", function () {}, 1);
+                             obj.del();
+                         }
+                     });
+                     }
+                 )
 
+            });*@
+
+
+            //编辑
+        layuiHelper.tableToolEvent('blogTableFilter', 'tool', ['edit', 'delete'], [
+                 {
+                 event: function (data, obj) {
+                     layui.use(['miniTab'], function () {
+                         var miniTab = layui.miniTab;
+                         // 打开新的窗口
+                         miniTab.openNewTabByIframe({
+                             href: "blog/update?id=" + data.id,
+                             title: "编辑博客",
+                         });
+                     });
+                 }
+                 }
+                ,{
+                    event:function (data,obj) {
+                     layerHelper.confirm('系统提示', '确定要删除吗？',
+                         function () {
+                         layuiHelper.ajaxGetAsync('@_staticConfigs.GenerateDeleteBlogApiUrl()?id=' + data.id, function (res) {
+                             layerHelper.closeAllLoading();
+                             if (res.code == 1) {
+                                 layerHelper.msg("删除成功!", function () {}, 1);
+                                 obj.del();
+                             }
+                         });
+                         }
+                     )
+
+                 }
+                }
+        ]);
     </script>
 }

@@ -55,11 +55,11 @@ function uploadImg(file, Editor) {
             if (success == 1) {
                 var url = msg["url"];
                 if (/\.(png|jpg|jpeg|gif|bmp|ico)$/.test(url)) {
-                 Editor.insertValue("![图片alt](" + msg["url"] + " ''图片title'')");
+                 Editor.insertValue("![图片alt](" + msg["url"] + " )");
                 }
                 else if (/[\/blog]$/.test(url))
                 {
-                    Editor.insertValue("![图片alt](" + msg["url"] + " ''图片title'')");
+                    Editor.insertValue("![图片alt](" + msg["url"] + " )");
                 }
                 else {
                     Editor.insertValue("[下载附件](" + msg["url"] + ")");

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using quewaner.Blog.CMS.Extensions.Configs;
 using quewaner.Blog.CMS.Extensions.HttpClients;
+using quewaner.Blog.DataTransferObject.ArticleDtos;
 using quewaner.Blog.DataTransferObject.ArticleTypeDtos;
 using quewaner.Blog.DataTransferObject.Pages;
 using quewaner.Blog.DataTransferObject.ResponseModel;
@@ -43,6 +44,24 @@ namespace quewaner.Blog.CMS.Controllers
                 ViewData["ArticleTypeList"] = new List<ShowArticleTypeDto>();
             }
             return View();
+        }
+
+
+
+        public async Task<IActionResult> Update(string id)
+        {
+            ResponseResult<ShowArticleDto> articleResult = await _httpClient.GetMapperDataAsync<ResponseResult<ShowArticleDto>>(_staticConfig.GenerateGetByIdBlogApiUrl(id));
+            ResponseResult<PageList<ShowArticleTypeDto>> responseResult = await _httpClient.GetMapperDataAsync<ResponseResult<PageList<ShowArticleTypeDto>>>(_staticConfig.GenerateGetArticleTypeApiUrl());
+            if (responseResult.Code == 1)
+            {
+                ViewData["ArticleTypeList"] = responseResult.Data.Items.ToList();
+
+            }
+            else
+            {
+                ViewData["ArticleTypeList"] = new List<ShowArticleTypeDto>();
+            }
+            return View(articleResult.Data);
         }
     }
 }

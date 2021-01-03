@@ -133,7 +133,7 @@ namespace quewaner.Blog.Api.Controllers
         /// </summary>
         /// <param name="id">主键</param>
         /// <returns></returns>
-        [HttpGet("id")]
+        [HttpGet("one/{id}")]
         public async Task<ActionResult<ResponseResult<ShowArticleDto>>> GetArticleByIdAsync(string id)
         {
             try

@@ -17,56 +17,56 @@ namespace quewaner.Blog.DataTransferObject.ArticleDtos
         /// <summary>
         /// 自定义主键编码
         /// </summary>
-        public string Code { get; private set; }
+        public string Code { get;  set; }
 
         /// <summary>
         /// 标题
         /// </summary>
-        public string Title { get; private set; }
+        public string Title { get;  set; }
 
         /// <summary>
         /// 摘要
         /// </summary>
-        public string SummaryInfo { get; private set; }
+        public string SummaryInfo { get;  set; }
 
         /// <summary>
         /// 头图
         /// </summary>
-        public string Icon { get; private set; }
+        public string Icon { get;  set; }
 
         /// <summary>
         /// 内容
         /// </summary>
-        public string Content { get; private set; }
+        public string Content { get;  set; }
 
         /// <summary>
         /// 阅读数量
         /// </summary>
-        public int ReadNumber { get; private set; } = 0;
+        public int ReadNumber { get;  set; } = 0;
 
         /// <summary>
         /// 点赞数量
         /// </summary>
-        public int PollNumber { get; private set; }
+        public int PollNumber { get;  set; }
 
         /// <summary>
         /// 当前状态1启用 ， 0 禁用
         /// </summary>
-        public int Status { get; private set; }
+        public int Status { get;  set; }
 
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreatTime { get; private set; }
+        public DateTime CreatTime { get;  set; }
 
         /// <summary>
         /// 更新时间
         /// </summary>
-        public DateTime UpdateTime { get; private set; }
+        public DateTime UpdateTime { get;  set; }
 
         /// <summary>
         /// 文章类别
         /// </summary>
-        public ShowArticleTypeDto ArticleType { get; private set; }
+        public ShowArticleTypeDto ArticleType { get;  set; }
     }
 }

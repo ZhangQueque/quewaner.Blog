@@ -24,11 +24,12 @@ namespace quewaner.Blog.DataTransferObject.ArticleTypeDtos
         /// 摘要信息
         /// </summary>
         public string SummaryInfo { get; set; }
+     
 
         /// <summary>
         /// 当前状态1启用 ， 0 禁用
         /// </summary>
-        public int Status { get; private set; } = 1;
+        public int Status { get;  set; } = 1;
         /// <summary>
         /// 创建时间
         /// </summary>

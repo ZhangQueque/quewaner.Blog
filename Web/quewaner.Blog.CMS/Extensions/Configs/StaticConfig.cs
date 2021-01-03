@@ -67,7 +67,7 @@ namespace quewaner.Blog.CMS.Extensions.Configs
         /// <returns></returns>
         public string GenerateGetByIdBlogApiUrl(string id)
         {
-            return string.Format("{0}/api/Blog/{1}", BlogApiUrl,id);
+            return string.Format("{0}/api/Blog/one/{1}", BlogApiUrl,id);
         }
 
 

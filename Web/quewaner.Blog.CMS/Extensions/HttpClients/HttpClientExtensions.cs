@@ -23,6 +23,7 @@ namespace quewaner.Blog.CMS.Extensions.HttpClients
             HttpResponseMessage httpResponse = await httpClient.GetAsync(url);
             if (httpResponse.IsSuccessStatusCode)
             {
+                var A = await httpResponse.Content.ReadAsStringAsync();
                 return await httpResponse.Content.ReadAsJsonAsync<T>();
             }
             else

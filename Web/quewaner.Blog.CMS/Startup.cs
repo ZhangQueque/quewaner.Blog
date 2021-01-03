@@ -14,6 +14,8 @@ using quewaner.Blog.CMS.Extensions.Configs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 
 namespace quewaner.Blog.CMS
@@ -57,6 +59,9 @@ namespace quewaner.Blog.CMS
 
             //注册Httpclient  工厂创建时使用
             services.AddHttpClient("",options=>options.BaseAddress = new Uri(Configuration["StaticConfigs:BlogApiUrl"]));
+
+            //解决html utf8 乱码问题
+            services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
             //注册基本配置信息
             services.Configure<StaticConfig>(Configuration.GetSection("StaticConfigs"));
