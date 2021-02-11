@@ -10,7 +10,7 @@
     <link href="~/editormd/css/editormd.css" rel="stylesheet" />
     <style>
         #add_article_icon_img img {
-            height: 137.5px;
+            /* height: 137.5px;*/
             max-width: 100%;
             border: 3px solid;
         }
@@ -33,7 +33,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" autocomplete="off" class="layui-input">
+                            <input type="text" name="title" lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
 
                         <label class="layui-form-label">摘要</label>
                         <div class="layui-input-block">
-                            <input type="text" name="summaryInfo" autocomplete="off" class="layui-input">
+                            <input type="text" name="summaryInfo" lay-verify="required" autocomplete="off" class="layui-input">
                         </div>
 
                     </div>
@@ -54,7 +54,7 @@
                     <div class="layui-col-md6">
                         <label class="layui-form-label">分类</label>
                         <div class="layui-input-block">
-                            <select name="articleTypeId">
+                            <select name="articleTypeId" lay-verify="required">
                                 <option value="">请选择</option>
                                 @if (articleTypeList is not null and { Count: > 0 })
                                 {
@@ -85,7 +85,7 @@
                 <p>点击上传，或将文件拖拽到此处</p>
             </div>
             <div class="layui-col-md6" id="add_article_icon_img">
-                <img src="https://quewaner-1304279371.file.myqcloud.com/%E7%BC%BA%E5%A9%89%E5%84%BF/quewaner.png/add_article_icon?a=@DateTimeOffset.UtcNow.ToUnixTimeSeconds()" id="icon" alt="上传成功后渲染" asp-append-version="true">
+                <img src="@OSSConstants.QuewanerPath/quewaner.png/add_article_icon" id="icon" alt="上传成功后渲染" asp-append-version="true">
             </div>
         </fieldset>
 
@@ -102,15 +102,14 @@
 @section Scripts{
     <script src="~/editormd/js/editormd.js"></script>
     <script src="~/editormd/js/editormdUploadImg.js" asp-append-version="true"></script>
-    <script src="~/js/layui-helper.js" asp-append-version="true"></script>
-    <script src="~/js/layer-helper.js" asp-append-version="true"></script>
+
     <script type="text/javascript">
         var testEditor;
         $(function () {
             //初始化富文本框
          testEditor = editormd("add-article-editormd", {
                 width: "100%",
-                height: 620,
+                height: 617,
                 path: '/editormd/lib/',
                 //theme: "dark", //头部工具栏主题
                 //previewTheme: "dark", //展示主题
@@ -143,7 +142,7 @@
                 //taskList: true,
                 //tex: true,  // 默认不解析
                 //flowChart: true,  // 默认不解析
-                //sequenceDiagram: true,  // 默认不解析  
+                //sequenceDiagram: true,  // 默认不解析
                 onload: function () {
                     //console.log('onload', this);
                     //this.fullscreen();
@@ -168,7 +167,7 @@
         //发布
         layuiHelper.formEvent("add-article", "submit", function (data) {
              var postData = data.field;
-            postData.icon = $('#icon').attr('src');
+            postData.icon = $('#icon').attr('src').replace("/add_article_icon", "");
             postData.content = testEditor.getMarkdown();
             postData.status = 1;
 
@@ -178,11 +177,7 @@
                 layerHelper.closeAllLoading();
                     if (res.code == 1) {
                         layerHelper.msg("发布成功!", function () {
-                            layui.use(['miniTab'], function () {
-                                var miniTab = layui.miniTab;
-                                //关闭当前窗口
-                                miniTab.deleteCurrentByIframe();
-                            });
+                            closeCurrentPage();
                         }, 6);
                     }
                 }, null);
@@ -199,7 +194,7 @@
         layuiHelper.formEvent("save-article", "submit", function (data) {
 
             var postData = data.field;
-            postData.icon = $('#icon').attr('src');
+            postData.icon = $('#icon').attr('src').replace("/add_article_icon","");
             postData.content = testEditor.getMarkdown();
             postData.status = 0;
 
@@ -209,11 +204,8 @@
                 layerHelper.closeAllLoading();
                           if (res.code == 1) {
                               layerHelper.msg("保存成功!", function () {
-                                  layui.use(['miniTab'], function () {
-                                      var miniTab = layui.miniTab;
-                                      //关闭当前窗口
-                                      miniTab.deleteCurrentByIframe();
-                                  });}, 6);
+                                  closeCurrentPage();
+                              }, 6);
                           }
             }, function (res) { });
                 }

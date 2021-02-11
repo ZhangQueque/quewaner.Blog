@@ -23,6 +23,7 @@ var layuiHelper = {
             table.render({
                 elem: tableId,
                 url: url,
+                height:690,
                 toolbar: toolBarId ?? false,
                 defaultToolbar: ['filter', 'exports', 'print', {
                     title: '提示',
@@ -214,4 +215,14 @@ function checkFunction(handler) {
         handler = function () { };
     }
     return handler;
+}
+
+
+//关闭当前窗口 
+function closeCurrentPage() {
+    layui.use(['miniTab'], function () {
+        var miniTab = layui.miniTab;
+        //关闭当前窗口
+        miniTab.deleteCurrentByIframe();
+    });
 }

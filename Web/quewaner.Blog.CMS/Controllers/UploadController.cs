@@ -37,7 +37,7 @@ namespace quewaner.Blog.CMS.Controllers
                     var putObjectResult = TencentOSSHelper.UploadFile(fileName, memory.ToArray());
                     if (putObjectResult?.IsSuccessful() ?? false)
                     {
-                        return Ok(new { code = 0, msg = "成功", data = new { src = "https://common-1304279371.file.myqcloud.com"+fileName + "/" + imgTemplate } }); //Layui特定返回格式
+                        return Ok(new { code = 0, msg = "成功", data = new { src = OSSConstants.CommonBlogPath+ fileName + "/" + imgTemplate } }); //Layui特定返回格式
                     }
                 }
                 return Ok(new { code = 1, msg = "失败" });
@@ -95,7 +95,7 @@ namespace quewaner.Blog.CMS.Controllers
                     var putObjectResult = TencentOSSHelper.UploadFile(fileName, memory.ToArray());
                     if (putObjectResult?.IsSuccessful() ?? false)
                     {
-                        return Ok(new { success = 1, message = "成功", url = "https://common-1304279371.file.myqcloud.com" + fileName+ "/blog" }); //编辑器固定的返回格式
+                        return Ok(new { success = 1, message = "成功", url = OSSConstants.CommonBlogPath + fileName+ "/blog" }); //编辑器固定的返回格式
                     }
                 }
                 return Ok(new { success = 0, message = "失败" });

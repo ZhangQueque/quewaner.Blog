@@ -9,7 +9,7 @@
     "href": ""
   },
   "menuInfo": [
-   
+
     {
       "title": "内容站管理",
       "icon": "fa fa-address-book",
@@ -18,14 +18,6 @@
       "child": [
 
         {
-          "title": "广告设置",
-          "href": "",
-          "icon": "fa fa-home",
-          "target": "_self",
-          "child": [
-          ]
-        },
-        {
           "title": " 技术博客",
           "href": "",
           "icon": "fa layui-icon layui-icon-read",
@@ -33,7 +25,7 @@
           "child": [
             {
               "title": "分类管理",
-              "href": "home/index",
+              "href": "home/error",
               "icon": "layui-icon  layui-icon-templeate-1",
               "target": "_self"
             },
@@ -50,142 +42,13 @@
               "target": "_self"
             }
           ]
-        },
-        {
-          "title": "美女写真",
-          "href": "",
-          "icon": "fa fa-home",
-          "target": "_self",
-          "child": [
-            {
-              "title": "分类管理",
-              "href": "home/index",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "写真管理",
-              "href": "page/welcome-2.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "二次元",
-          "href": "",
-          "icon": "fa fa-home",
-          "target": "_self",
-          "child": [
-            {
-              "title": "分类管理",
-              "href": "home/index",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "二次元管理",
-              "href": "page/welcome-2.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            }
-          ]
         }
-      ]
-    },
-    {
-      "title": "使用教程",
-      "icon": "fa fa-lemon-o",
-      "href": "",
-      "target": "_self",
-      "child": [
-        {
-          "title": "表格",
-          "href": "demo/table",
-          "icon": "fa fa-dot-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "图标选择",
-          "href": "page/icon-picker.html",
-          "icon": "fa fa-adn",
-          "target": "_self"
-        },
-        {
-          "title": "颜色选择",
-          "href": "page/color-select.html",
-          "icon": "fa fa-dashboard",
-          "target": "_self"
-        },
-        {
-          "title": "下拉选择",
-          "href": "page/table-select.html",
-          "icon": "fa fa-angle-double-down",
-          "target": "_self"
-        },
-        {
-          "title": "文件上传",
-          "href": "page/upload.html",
-          "icon": "fa fa-arrow-up",
-          "target": "_self"
-        },
-        {
-          "title": "富文本编辑器",
-          "href": "page/editor.html",
-          "icon": "fa fa-edit",
-          "target": "_self"
-        },
-        {
-          "title": "省市县区选择器",
-          "href": "page/area.html",
-          "icon": "fa fa-rocket",
-          "target": "_self"
-        }
-      ]
-    },
-    {
-      "title": "其它管理",
-      "icon": "fa fa-slideshare",
-      "href": "",
-      "target": "_self",
-      "child": [
-        {
-          "title": "多级菜单",
-          "href": "",
-          "icon": "fa fa-meetup",
-          "target": "",
-          "child": [
-            {
-              "title": "按钮1",
-              "href": "page/button.html?v=1",
-              "icon": "fa fa-calendar",
-              "target": "_self",
-              "child": [
-                {
-                  "title": "按钮2",
-                  "href": "page/button.html?v=2",
-                  "icon": "fa fa-snowflake-o",
-                  "target": "_self",
-                  "child": [
-                    {
-                      "title": "按钮3",
-                      "href": "page/button.html?v=3",
-                      "icon": "fa fa-snowflake-o",
-                      "target": "_self"
-                    },
-                    {
-                      "title": "表单4",
-                      "href": "page/form.html?v=1",
-                      "icon": "fa fa-calendar",
-                      "target": "_self"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
+
       ]
     }
+
   ]
 }
+
+
+ 
