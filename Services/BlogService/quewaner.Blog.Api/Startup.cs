@@ -38,7 +38,7 @@ namespace quewaner.Blog.Api
             services.AddControllers();
 
             //ÅäÖÃ¿çÓò
-            services.AddCors(options=>options.AddPolicy("cors", set=>set.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()));
+            services.AddCors(options=>options.AddPolicy("cors", set=>set.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader() ));
 
             //ÅäÖÃSwaggerÎÄÕÂ×¢ÊÍ
             services.AddSwaggerGen(c =>
@@ -74,6 +74,7 @@ namespace quewaner.Blog.Api
             }
             else
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "quewaner.Blog.Api v1"); });
             }
